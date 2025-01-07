@@ -57,14 +57,14 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen p-4 bg-background text-foreground",
+          "min-h-screen  text-foreground",
           fontSans.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light">
           <TooltipProvider delayDuration={0}>
             {children}
-            {/* <Navbar /> */}
+            
           </TooltipProvider>
         </ThemeProvider>
       </body>

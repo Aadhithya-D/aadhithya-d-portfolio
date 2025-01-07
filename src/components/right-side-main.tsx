@@ -10,7 +10,7 @@ const BLUR_FADE_DELAY = 0.04;
 
 export function RightSideMain() {
   return (
-    <div>
+    <div className="space-y-8 p-8">
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
@@ -84,7 +84,7 @@ export function RightSideMain() {
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                   Check out my latest work
                 </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   I&apos;ve worked on a variety of projects, from simple
                   websites to complex web applications. Here are a few of my
                   favorites.
@@ -125,7 +125,7 @@ export function RightSideMain() {
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                   I like building things
                 </h2>
-                <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   During my time in university, I attended{" "}
                   {DATA.hackathons.length}+ hackathons. People from around the
                   country would come together and build incredible things in 2-3
@@ -167,7 +167,7 @@ export function RightSideMain() {
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                 Get in Touch
               </h2>
-              <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              <p className="mx-auto max-w-[600px] text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                 Want to chat? Just shoot me a dm{" "}
                 <Link
                   href={DATA.contact.social.X.url}
