@@ -1,18 +1,60 @@
+"use client";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { DATA } from "@/data/resume";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export function RightSideMain() {
+  const handleScroll = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="space-y-8 p-8">
-      <section id="work">
-        <div className="flex min-h-0 flex-col gap-y-3">
+    <div className="space-y-8 pb-8">
+      <div className="sticky top-0 bg-background  z-10 pt-4 pl-8 pr-8 pb-4 border-b-2">
+        <Tabs defaultValue="work" className="">
+          <TabsList className="h-10 pl-2 pr-2 pt-2 pb-2">
+            <TabsTrigger value="work" onClick={() => handleScroll("work")}>
+              Work Experience
+            </TabsTrigger>
+            <TabsTrigger
+              value="education"
+              onClick={() => handleScroll("education")}
+            >
+              Education
+            </TabsTrigger>
+            <TabsTrigger
+              value="projects"
+              onClick={() => handleScroll("projects")}
+            >
+              Projects
+            </TabsTrigger>
+            <TabsTrigger
+              value="hackathons"
+              onClick={() => handleScroll("hackathons")}
+            >
+              Hackathons
+            </TabsTrigger>
+            <TabsTrigger
+              value="contact"
+              onClick={() => handleScroll("contact")}
+            >
+              Contact
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+
+      <section id="work" className="scroll-m-24">
+        <div className="flex min-h-0 flex-col gap-y-3 pl-12 pr-12">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
             <h2 className="text-xl font-bold">Work Experience</h2>
           </BlurFade>
@@ -36,7 +78,7 @@ export function RightSideMain() {
           ))}
         </div>
       </section>
-      <section id="education">
+      <section id="education" className="pl-12 pr-12 scroll-m-24">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
             <h2 className="text-xl font-bold">Education</h2>
@@ -59,21 +101,7 @@ export function RightSideMain() {
           ))}
         </div>
       </section>
-      <section id="skills">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-bold">Skills</h2>
-          </BlurFade>
-          <div className="flex flex-wrap gap-1">
-            {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section id="projects">
+      <section id="projects" className="pl-12 pr-12 scroll-m-16">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -114,7 +142,7 @@ export function RightSideMain() {
           </div>
         </div>
       </section>
-      <section id="hackathons">
+      <section id="hackathons" className="pl-12 pr-12 scroll-m-16">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -157,7 +185,7 @@ export function RightSideMain() {
           </BlurFade>
         </div>
       </section>
-      <section id="contact">
+      <section id="contact" className="pl-12 pr-12">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
             <div className="space-y-3">

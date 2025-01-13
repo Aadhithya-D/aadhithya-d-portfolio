@@ -13,19 +13,21 @@ export default function Home() {
     //     </div>
     //   </div>
     // </main>
-    <main className="w-full h-[100vh] p-6 overflow-hidden bg-primary-background">
-      <div className="flex h-[calc(100%+3rem)] w-full -my-6 -mb-8 gap-3">
-        <div className="w-[40%] py-6">
-          <div className="h-full bg-background  rounded-xl shadow-lg p-4 transition-all duration-300 hover:shadow-xl">
-            <LeftSideMain />
+    <div className="min-h-screen flex items-center justify-center bg-primary-background">
+      <main className="max-w-screen-2xl h-[100vh] p-6 overflow-hidden bg-primary-background">
+        <div className="flex h-[calc(100%+3rem)] w-full -my-6 -mb-8 gap-3 flex-col md:flex-row overflow-y-auto">
+          <div className="md:w-[40%] w-[100%] py-6">
+            <div className="h-full bg-background  rounded-xl shadow-lg p-4 transition-all duration-300 hover:shadow-xl">
+              <LeftSideMain />
+            </div>
+          </div>
+          <div className="md:w-[60%] w-[100%] py-6 ">
+            <div className="h-full bg-background  rounded-xl shadow-lg p-4 pt-0 pl-0 pr-0 transition-all duration-300 hover:shadow-xl overflow-y-auto">
+              <RightSideMain />
+            </div>
           </div>
         </div>
-        <div className="w-[60%] py-6 ">
-          <div className="h-full bg-background  rounded-xl shadow-lg p-4 transition-all duration-300 hover:shadow-xl overflow-y-auto">
-            <RightSideMain />
-          </div>
-        </div>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }
