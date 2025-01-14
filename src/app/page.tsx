@@ -5,18 +5,18 @@ import GridPattern from "@/components/ui/grid-pattern";
 
 export default function Home() {
   return (
-    <div>
-      <div className="min-h-screen flex items-center justify-center ">
+    <div className="">
+      <div className="h-full flex items-center justify-center ">
         <GridPattern
           width={30}
           height={30}
           x={-1}
           y={-1}
           strokeDasharray={"4 2"}
-          className="absolute inset-0 size-full opacity-80"
+          className="absolute inset-0 size-full opacity-80 bg-primary-background"
         />
-        <div
-          className="absolute inset-x-0   w-full  h-full -z-10 transform-gpu  blur-3xl   "
+        {/* <div
+          className="absolute inset-x-0   w-full  h-screen -z-10 transform-gpu  blur-3xl  overflow-hidden "
           aria-hidden="true"
         >
           <div
@@ -38,9 +38,9 @@ export default function Home() {
               clipPath: "ellipse(67% 20% at 15% 40%)",
             }}
           />
-        </div>
+        </div> */}
         <main className="max-w-screen-2xl h-[100vh] p-6 overflow-hidden relative">
-          <div className="flex h-[calc(100%+3rem)] w-full -my-6 -mb-8 gap-3 flex-col md:flex-row overflow-y-auto">
+          <div className="flex h-[calc(100%+3rem)] w-full -my-6 -mb-8 gap-3 flex-col md:flex-row overflow-hidden">
             <div className="md:w-[40%] w-[100%] py-6">
               <div className="h-full p-4 bg-background border-2 rounded-xl overflow-y-auto">
                 <LeftSideMain />
