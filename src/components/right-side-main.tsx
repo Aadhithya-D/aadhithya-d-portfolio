@@ -6,6 +6,8 @@ import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { DATA } from "@/data/resume";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import ShineBorder from "./ui/shine-border";
+// import theme from "tailwindcss/defaultTheme";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -19,7 +21,11 @@ export function RightSideMain() {
 
   return (
     <div className="space-y-8 pb-8">
-      <div className="sticky top-0 bg-background  z-10 pt-4 pl-8 pr-8 pb-4 border-b-2">
+      <div className="z-10 sticky top-0  bg-background px-8 py-4 rounded-t-xl border-b-2">
+        {/* <ShineBorder
+                className=" z-10 sticky top-0 bg-background w-full  pt-4 pl-8 pr-8 pb-4 border-b-2"
+                color={theme.theme === "dark" ? "white" : "black"}
+              > */}
         <Tabs defaultValue="work" className="">
           <TabsList className="h-10 pl-2 pr-2 pt-2 pb-2">
             <TabsTrigger value="work" onClick={() => handleScroll("work")}>
@@ -51,6 +57,7 @@ export function RightSideMain() {
             </TabsTrigger>
           </TabsList>
         </Tabs>
+        {/* </ShineBorder> */}
       </div>
 
       <section id="work" className="scroll-m-24">
