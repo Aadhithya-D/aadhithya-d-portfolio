@@ -7,6 +7,7 @@ import Markdown from "react-markdown";
 import Navbar from "./navbar";
 import { Badge } from "@/components/ui/badge";
 import VerticalCutReveal from "./fancy/vertical-cut-reveal";
+import ShineBorder from "./ui/shine-border";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -17,17 +18,6 @@ export function LeftSideMain() {
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
-              {/* <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-5xl/none"
-                yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
-              />
-              <BlurFadeText
-                className="max-w-[600px] md:text-xl"
-                delay={BLUR_FADE_DELAY}
-                text={DATA.description}
-              /> */}
               <div className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-4xl/none">
                 <VerticalCutReveal
                   splitBy="characters"
@@ -60,10 +50,17 @@ export function LeftSideMain() {
               </div>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 border">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
+              <ShineBorder
+                className="inline-flex"
+                color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+                borderRadius={9999}
+                borderWidth={3}
+              >
+                <Avatar className="size-28 border">
+                  <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
+                  <AvatarFallback>{DATA.initials}</AvatarFallback>
+                </Avatar>
+              </ShineBorder>
             </BlurFade>
           </div>
         </div>
