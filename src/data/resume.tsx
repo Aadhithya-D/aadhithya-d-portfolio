@@ -53,7 +53,7 @@ export const DATA = {
       company: "Recruitr AI",
       href: "https://recruitrai.azurewebsites.net/",
       badges: [],
-      location: "Chennai, IN",
+      location: "Chennai, Tamil Nadu, India",
       title: "CEO & Co-Founder",
       logoUrl: "/recruitrai.jpeg",
       start: "January 2024",
@@ -65,13 +65,12 @@ export const DATA = {
       company: "FLSmidth",
       badges: [],
       href: "https://www.flsmidth.com/",
-      location: "Chennai, IN",
+      location: "Chennai, Tamil Nadu, India",
       title: "Research And Development Intern",
-      logoUrl: "/flsmidth_logo.jpeg",
+      logoUrl: "/flsmidth.jpg",
       start: "August 2023",
       end: "November 2023",
-      description:
-        `• Automated wear and tear analysis report generation for mining mills, reducing the processing time by 90%.\n
+      description: `• Automated wear and tear analysis report generation for mining mills, reducing the processing time by 90%.\n
         • Led the development of an iOS mobile app with SwiftUI for 3D scanning of mining mills, utilizing LiDAR data and Photogrammetry, and integrating ObjectCapture for precision, seamlessly connected to the cloud.
         • Engineered a desktop app with Flutter for streamlined cloud storage management and automated report generation.
         • Initiated the integration of machine learning models to automate report generation, streamlining data analysis processes.
@@ -79,86 +78,61 @@ export const DATA = {
         • Managed cloud deployments using Google Cloud Platform (GCP) tools, such as Cloud Storage and Compute Engine VM Instance.`,
     },
     {
-      company: "Nvidia",
-      href: "https://nvidia.com/",
+      company: "Ford Motor Company",
+      href: "https://www.ford.com/",
       badges: [],
-      location: "Santa Clara, CA",
-      title: "Software Engineer",
-      logoUrl: "/nvidia.png",
-      start: "January 2020",
-      end: "April 2020",
-      description:
-        "Architected and wrote the entire MVP of the GeForce Now Cloud Gaming internal admin and A/B testing dashboard using React, Redux, TypeScript, and Python.",
+      location: "Chennai, Tamil Nadu, India",
+      title: "Software Engineer Intern",
+      logoUrl: "/ford_motor_company_logo.jpeg",
+      start: "August 2023",
+      end: "October 2023",
+      description: `• Collaborated effectively with the Android team, ensuring a smooth workflow.
+        • Elevated user experience and visual appeal through UI enhancements with Jetpack Compose in Kotlin.
+        • Applied deep linking within notifications to streamline user navigation.
+        • Implemented gRPC bidirectional streaming, seamlessly integrated with Google Pub/Sub and a Spring Boot BFF (Backend for Frontend), achieving a remarkable 7x boost in broadcasting speed while ensuring robust stability.
+        • Streamlined data engineering with multiple algorithms and facilitated ML model selection for driver-selective broadcasting.`,
     },
     {
-      company: "Splunk",
-      href: "https://splunk.com",
+      company: "Bhai AR",
+      href: "https://www.bhai.tech/",
       badges: [],
-      location: "San Jose, CA",
-      title: "Software Engineer",
-      logoUrl: "/splunk.svg",
-      start: "January 2019",
-      end: "April 2019",
-      description:
-        "Co-developed a prototype iOS app with another intern in Swift for the new Splunk Phantom security orchestration product (later publicly demoed and launched at .conf annual conference in Las Vegas). Implemented a realtime service for the iOS app in Django (Python) and C++; serialized data using protobufs transmitted over gRPC resulting in an approximate 500% increase in data throughput.",
-    },
-    {
-      company: "Lime",
-      href: "https://li.me/",
-      badges: [],
-      location: "San Francisco, CA",
-      title: "Software Engineer",
-      logoUrl: "/lime.svg",
-      start: "January 2018",
-      end: "April 2018",
-      description:
-        "Proposed and implemented an internal ruby API for sending/receiving commands to scooters over LTE networks. Developed a fully automated bike firmware update system to handle asynchronous firmware updates of over 100,000+ scooters worldwide, and provide progress reports in real-time using React, Ruby on Rails, PostgreSQL and AWS EC2 saving hundreds of developer hours.",
-    },
-    {
-      company: "Mitre Media",
-      href: "https://mitremedia.com/",
-      badges: [],
-      location: "Toronto, ON",
-      title: "Software Engineer",
-      logoUrl: "/mitremedia.png",
-      start: "May 2017",
-      end: "August 2017",
-      description:
-        "Designed and implemented a robust password encryption and browser cookie storage system in Ruby on Rails. Leveraged the Yahoo finance API to develop the dividend.com equity screener",
+      location: "Bengaluru, Karnataka, India",
+      title: "SDE Intern",
+      logoUrl: "/bhai_logo.jpeg",
+      start: "February 2023",
+      end: "March 2023",
+      description: `• Developed two Flutter and Firebase apps: a news aggregator for the North American market and a news submission app.\n
+        • Implemented a custom cache management system that improved media loading performance by 80%.
+        • Enhanced app functionality with deep linking, push notifications, and other features.
+        • Created AiBlocks, a mobile app that uses generative AI models to create images from user prompts.
+        • Images can be minted as NFTs, and the app is being used by 15 different NFT projects.`,
     },
   ],
   education: [
+    
+    {
+      school: "Vellore Institute of Technology, Chennai",
+      href: "https://chennai.vit.ac.in/",
+      degree: "Bachelor of Technology, Computer Science and Engineering with Specialization in Cyber Physical Systems",
+      logoUrl: "/vit-logo.png",
+      start: "2021",
+      end: "2025",
+    },
+    {
+      school: "SKNS PMC Vivekananda Vidyalaya",
+      href: "https://www.sknspmcvv.org/",
+      degree: "High School (PCM with Computer Science)",
+      logoUrl: "/vvjc-logo.png",
+      start: "2007",
+      end: "2021",
+    },
     {
       school: "Buildspace",
       href: "https://buildspace.so",
-      degree: "s3, s4, sf1, s5",
+      degree: "s5",
       logoUrl: "/buildspace.jpg",
       start: "2023",
       end: "2024",
-    },
-    {
-      school: "University of Waterloo",
-      href: "https://uwaterloo.ca",
-      degree: "Bachelor's Degree of Computer Science (BCS)",
-      logoUrl: "/waterloo.png",
-      start: "2016",
-      end: "2021",
-    },
-    {
-      school: "Wilfrid Laurier University",
-      href: "https://wlu.ca",
-      degree: "Bachelor's Degree of Business Administration (BBA)",
-      logoUrl: "/laurier.png",
-      start: "2016",
-      end: "2021",
-    },
-    {
-      school: "International Baccalaureate",
-      href: "https://ibo.org",
-      degree: "IB Diploma",
-      logoUrl: "/ib.png",
-      start: "2012",
-      end: "2016",
     },
   ],
   projects: [
