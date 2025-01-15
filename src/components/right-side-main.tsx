@@ -6,12 +6,49 @@ import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { DATA } from "@/data/resume";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// import ShineBorder from "./ui/shine-border";
-// import theme from "tailwindcss/defaultTheme";
+import { useEffect, useState } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
+const SECTIONS = ["work", "education", "projects", "hackathons", "contact"] as const;
+type Section = typeof SECTIONS[number];
 
 export function RightSideMain() {
+
+  const [activeTab, setActiveTab] = useState<Section>("work");
+
+  useEffect(() => {
+    const observers = new Map();
+    
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id as Section;
+          setActiveTab(sectionId);
+        }
+      });
+    };
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-50% 0px",
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    SECTIONS.forEach((sectionId) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        observer.observe(element);
+        observers.set(sectionId, observer);
+      }
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
+
   const handleScroll = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -22,11 +59,7 @@ export function RightSideMain() {
   return (
     <div className="space-y-8 pb-8">
       <div className="z-10 sticky top-0  bg-background px-8 py-4 rounded-t-xl border-b-2">
-        {/* <ShineBorder
-                className=" z-10 sticky top-0 bg-background w-full  pt-4 pl-8 pr-8 pb-4 border-b-2"
-                color={theme.theme === "dark" ? "white" : "black"}
-              > */}
-        <Tabs defaultValue="work" className="">
+        <Tabs value={activeTab} className="">
           <TabsList className="h-10 pl-2 pr-2 pt-2 pb-2">
             <TabsTrigger value="work" onClick={() => handleScroll("work")}>
               Work Experience
@@ -57,7 +90,6 @@ export function RightSideMain() {
             </TabsTrigger>
           </TabsList>
         </Tabs>
-        {/* </ShineBorder> */}
       </div>
 
       <section id="work" className="scroll-m-24">
