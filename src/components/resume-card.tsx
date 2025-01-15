@@ -87,9 +87,9 @@ export const ResumeCard = ({
           {shouldTruncate && (
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="text-xs text-muted-foreground underline cursor-pointer hover:text-foreground"
+              className={`text-xs text-muted-foreground underline cursor-pointer hover:text-foreground ${isExpanded ? 'ml-2' : ''}`}
             >
-              {isExpanded ? '..See Less' : 'See More'}
+              {isExpanded ? 'See Less' : 'See More'}
             </button>
           )}
         </div>
