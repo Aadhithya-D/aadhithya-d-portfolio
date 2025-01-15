@@ -6,7 +6,7 @@ import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { DATA } from "@/data/resume";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
 const SECTIONS = ["work", "education", "projects", "hackathons", "contact"] as const;
@@ -15,44 +15,68 @@ type Section = typeof SECTIONS[number];
 export function RightSideMain() {
 
   const [activeTab, setActiveTab] = useState<Section>("work");
+  const isScrollingRef = useRef(false);
+  const observersRef = useRef(new Map());
 
   useEffect(() => {
-    const observers = new Map();
-    
-    const observerCallback: IntersectionObserverCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const sectionId = entry.target.id as Section;
-          setActiveTab(sectionId);
-        }
-      });
+    const createObserver = (sectionId: Section) => {
+      const options = {
+        root: null,
+        rootMargin: sectionId === "contact" ? "-20% 0px" : "-50% 0px",
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isScrollingRef.current) {
+            setActiveTab(sectionId);
+          }
+        });
+      }, options);
+
+      return observer;
     };
 
-    const observerOptions = {
-      root: null,
-      rootMargin: "-50% 0px",
-      threshold: 0
+    const handleScroll = () => {
+      if (!isScrollingRef.current && 
+          (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 100) {
+        setActiveTab("contact");
+      }
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    window.addEventListener("scroll", handleScroll);
 
     SECTIONS.forEach((sectionId) => {
       const element = document.getElementById(sectionId);
       if (element) {
+        const observer = createObserver(sectionId);
         observer.observe(element);
-        observers.set(sectionId, observer);
+        observersRef.current.set(sectionId, observer);
       }
     });
 
     return () => {
-      observers.forEach((observer) => observer.disconnect());
+      observersRef.current.forEach((observer) => observer.disconnect());
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const handleScroll = (sectionId: string) => {
+  const handleScroll = (sectionId: Section) => {
+    // Set the active tab immediately when clicked
+    setActiveTab(sectionId);
+    
+    // Disable intersection observers temporarily
+    isScrollingRef.current = true;
+    
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
+      
+      // Re-enable intersection observers after scroll animation
+      // Standard smooth scroll usually takes about 500ms
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 1000); // Using 1000ms to be safe
     }
   };
 
