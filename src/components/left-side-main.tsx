@@ -17,7 +17,6 @@ const BLUR_FADE_DELAY = 0.04;
 
 export function LeftSideMain() {
   const { theme } = useTheme()
-  console.log(theme)
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "15min" });
@@ -111,7 +110,7 @@ export function LeftSideMain() {
           namespace="15min"
           calLink="aadhithya-d/15min"
           style={{ width: "100%", height: "100%", overflow: "scroll" }}
-          config={{ layout: "month_view", theme: theme === "dark" ? "dark" : "light" }}
+          config={{ layout: "month_view" }}
         />
       </Popup>
     </div>
