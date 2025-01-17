@@ -1,6 +1,5 @@
 "use client";
 import BlurFade from "@/components/magicui/blur-fade";
-// import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
@@ -8,10 +7,24 @@ import Navbar from "./navbar";
 import { Badge } from "@/components/ui/badge";
 import VerticalCutReveal from "./fancy/vertical-cut-reveal";
 import ShineBorder from "./ui/shine-border";
+import Cal, { getCalApi } from "@calcom/embed-react";
+import { useEffect } from "react";
+import Popup from "./pop-up";
+import { useTheme } from 'next-themes'
+import BookingLayout from "./calendar-component";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export function LeftSideMain() {
+  const { theme } = useTheme()
+  console.log(theme)
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi({ namespace: "15min" });
+      cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+    })();
+  }, []);
+
   return (
     <div className="space-y-8 p-8">
       <section id="hero">
@@ -90,6 +103,17 @@ export function LeftSideMain() {
         </div>
       </section>
       <Navbar />
+      
+      <Popup
+        trigger={<div><BookingLayout /></div>}
+      >
+        <Cal
+          namespace="15min"
+          calLink="aadhithya-d/15min"
+          style={{ width: "100%", height: "100%", overflow: "scroll" }}
+          config={{ layout: "month_view", theme: theme === "dark" ? "dark" : "light" }}
+        />
+      </Popup>
     </div>
   );
 }

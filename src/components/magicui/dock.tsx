@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import React, { PropsWithChildren, useRef } from "react";
+import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
 
 export interface DockProps extends VariantProps<typeof dockVariants> {
   className?: string;
@@ -31,6 +31,18 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     ref
   ) => {
     const mousex = useMotionValue(Infinity);
+    const [theme, setTheme] = useState('light'); // Example theme state
+
+    useEffect(() => {
+      // Function to clear cache
+      const clearCache = () => {
+        console.log('Cache cleared');
+        // Add your cache clearing logic here
+      };
+  
+      // Clear cache when theme changes
+      clearCache();
+    }, [theme]);
 
     const renderChildren = () => {
       return React.Children.map(children, (child: any) => {

@@ -10,11 +10,16 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useEffect, useRef, useState } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
-const SECTIONS = ["work", "education", "projects", "hackathons", "contact"] as const;
-type Section = typeof SECTIONS[number];
+const SECTIONS = [
+  "work",
+  "education",
+  "projects",
+  "hackathons",
+  "contact",
+] as const;
+type Section = (typeof SECTIONS)[number];
 
 export function RightSideMain() {
-
   const [activeTab, setActiveTab] = useState<Section>("work");
   const isScrollingRef = useRef(false);
   const observersRef = useRef(new Map());
@@ -24,7 +29,7 @@ export function RightSideMain() {
       const options = {
         root: null,
         rootMargin: sectionId === "contact" ? "-20% 0px" : "-50% 0px",
-        threshold: 0
+        threshold: 0,
       };
 
       const observer = new IntersectionObserver((entries) => {
@@ -39,8 +44,11 @@ export function RightSideMain() {
     };
 
     const handleScroll = () => {
-      if (!isScrollingRef.current && 
-          (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 100) {
+      if (
+        !isScrollingRef.current &&
+        window.innerHeight + window.scrollY >=
+          document.documentElement.scrollHeight - 100
+      ) {
         setActiveTab("contact");
       }
     };
@@ -63,18 +71,13 @@ export function RightSideMain() {
   }, []);
 
   const handleScroll = (sectionId: Section) => {
-    // Set the active tab immediately when clicked
     setActiveTab(sectionId);
-    
-    // Disable intersection observers temporarily
+
     isScrollingRef.current = true;
-    
+
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-      
-      // Re-enable intersection observers after scroll animation
-      // Standard smooth scroll usually takes about 500ms
       setTimeout(() => {
         isScrollingRef.current = false;
       }, 1000); // Using 1000ms to be safe
@@ -83,42 +86,44 @@ export function RightSideMain() {
 
   return (
     <div className="space-y-8 pb-8">
-      <div className="z-10 sticky top-0  bg-background px-8 py-4 rounded-t-xl border-b-2">
-        <Tabs value={activeTab} className="">
-          <TabsList className="h-10 pl-2 pr-2 pt-2 pb-2">
-            <TabsTrigger value="work" onClick={() => handleScroll("work")}>
-              Work Experience
-            </TabsTrigger>
-            <TabsTrigger
-              value="education"
-              onClick={() => handleScroll("education")}
-            >
-              Education
-            </TabsTrigger>
-            <TabsTrigger
-              value="projects"
-              onClick={() => handleScroll("projects")}
-            >
-              Projects
-            </TabsTrigger>
-            <TabsTrigger
-              value="hackathons"
-              onClick={() => handleScroll("hackathons")}
-            >
-              Hackathons
-            </TabsTrigger>
-            <TabsTrigger
-              value="contact"
-              onClick={() => handleScroll("contact")}
-            >
-              Contact
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
+      <div className="hidden sm:block z-10 sticky top-0 bg-background px-4 py-4 rounded-t-xl border-b-2">
+        <div className="">
+          <Tabs value={activeTab} className="">
+            <TabsList className="h-10 pl-2 pr-2 pt-2 pb-2">
+              <TabsTrigger value="work" onClick={() => handleScroll("work")}>
+                Work Experience
+              </TabsTrigger>
+              <TabsTrigger
+                value="education"
+                onClick={() => handleScroll("education")}
+              >
+                Education
+              </TabsTrigger>
+              <TabsTrigger
+                value="projects"
+                onClick={() => handleScroll("projects")}
+              >
+                Projects
+              </TabsTrigger>
+              <TabsTrigger
+                value="hackathons"
+                onClick={() => handleScroll("hackathons")}
+              >
+                Hackathons
+              </TabsTrigger>
+              <TabsTrigger
+                value="contact"
+                onClick={() => handleScroll("contact")}
+              >
+                Contact
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
       </div>
 
       <section id="work" className="scroll-m-24">
-        <div className="flex min-h-0 flex-col gap-y-3 pl-12 pr-12">
+        <div className="flex min-h-0 flex-col gap-y-3 pl-12 pr-12 pt-4 sm:pt-0">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
             <h2 className="text-xl font-bold">Work Experience</h2>
           </BlurFade>
