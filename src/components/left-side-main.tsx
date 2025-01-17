@@ -10,13 +10,11 @@ import ShineBorder from "./ui/shine-border";
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 import Popup from "./pop-up";
-import { useTheme } from 'next-themes'
 import BookingLayout from "./calendar-component";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export function LeftSideMain() {
-  const { theme } = useTheme()
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "15min" });
