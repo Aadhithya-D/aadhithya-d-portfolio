@@ -1,3 +1,5 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -45,28 +47,33 @@ export function ProjectCard({
         "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"
       }
     >
-      <Link
-        href={`/projects/${title.toLowerCase().replace(/ /g, "-")}`}
-        className={cn("block cursor-pointer", className)}
-      >
-        {video && (
-          <video
-            src={video}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="pointer-events-none mx-auto h-40 w-full object-cover object-top"
-          />
-        )}
-        {image && (
-          <Image
-            src={image}
-            alt={title}
-            className="h-40 w-full overflow-hidden object-cover object-top"
-          />
-        )}
-      </Link>
+      <div className={cn("block", className)}>
+        <Link href={`/projects/${title.toLowerCase().replace(/ /g, "-")}`} className="block">
+          <div className="relative h-40 w-full">
+            {video ? (
+              <video
+                src={video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                onError={(e) => {
+                  console.error('Error loading video:', e);
+                  e.currentTarget.style.display = 'none';
+                }}
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top"
+              />
+            ) : image ? (
+              <Image
+                src={image}
+                alt={title}
+                fill
+                className="absolute inset-0 object-cover object-top"
+              />
+            ) : null}
+          </div>
+        </Link>
+      </div>
       <CardHeader className="px-2">
         <div className="space-y-1">
           <CardTitle className="mt-1 text-base">{title}</CardTitle>

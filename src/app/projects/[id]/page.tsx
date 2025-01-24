@@ -3,38 +3,80 @@
 import { ProjectLeftSide } from "@/components/project-left-side";
 import { ProjectRightSide } from "@/components/project-right-side";
 import GridPattern from "@/components/ui/grid-pattern";
+import { Globe } from "lucide-react";
 
-const mockProject = {
-  id: "1",
-  title: "Sample Project",
-  date: "2023-03-01",
-  overview: "A comprehensive project that demonstrates various technical capabilities and problem-solving approaches.",
-  description: "This is a sample project description that showcases the project's key features and goals.",
-  technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
-  challenges: [
-    "Implementing real-time data synchronization",
-    "Optimizing performance for large datasets",
-    "Creating a responsive and accessible UI"
-  ],
-  outcomes: [
-    "Improved user engagement by 40%",
-    "Reduced loading time by 60%",
-    "Successfully deployed to production"
-  ],
-  timeline: "3 months",
-  role: "Lead Developer",
-  team: "4 members",
-  technicalDetails: [
-    {
-      title: "Architecture",
-      content: "Built using a modern tech stack with React and Next.js for optimal performance."
-    },
-    {
-      title: "Performance Optimization",
-      content: "Implemented lazy loading and code splitting to improve initial load times."
-    }
-  ]
+type TechDetail = {
+  name: string;
+  description: string;
+  icon?: string;
 };
+
+const projects = 
+  {
+    title: "Chat Collect",
+    href: "https://chatcollect.com",
+    dates: "Jan 2024 - Feb 2024",
+    active: true,
+    timeline: "6 Weeks",
+    role: "Full-stack Developer",
+    teamSize: "1",
+    overview: "With the release of the OpenAI GPT Store...",
+    technologies: ["Next.js", "Typescript", "PostgreSQL"],
+    media: {
+      type: "video",
+      url: "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+      alt: "Chat Collect Demo"
+    },
+    sections: [
+      {
+        title: "Project Overview",
+        type: "paragraph",
+        content: "Detailed description of the project goals and vision..."
+      },
+      {
+        title: "Technical Challenges",
+        type: "list",
+        content: [
+          "Implementing real-time analytics with WebSockets",
+          "Handling rate limiting for OpenAI API",
+          "Ensuring GDPR compliance for user data"
+        ]
+      },
+      {
+        title: "Tech Stack Deep Dive",
+        type: "tech-stack",
+        content: [
+          {
+            name: "Next.js App Router",
+            description: "Handled dynamic routing and server-side rendering",
+            icon: "nextjs"
+          },
+          {
+            name: "Prisma ORM",
+            description: "Used for database schema management",
+            icon: "prisma"
+          }
+        ]
+      },
+      {
+        title: "Key Outcomes",
+        type: "grid",
+        content: [
+          "Reduced API costs by 40% through caching",
+          "Achieved 99.9% uptime with Cloudflare",
+          "Onboarded 500+ active users in first month"
+        ]
+      }
+    ],
+    links: [
+      {
+        type: "Website",
+        href: "https://chatcollect.com",
+        icon: <Globe className="size-3" />
+      }
+    ]
+  }
+
 
 export default function ProjectPage({  }: { params: { id: string } }) {
   return (
@@ -54,24 +96,19 @@ export default function ProjectPage({  }: { params: { id: string } }) {
               <div className="md:w-[40%] w-[100%] py-6">
                 <div className="h-full bg-background border-2 rounded-xl overflow-y-auto">
                   <ProjectLeftSide
-                    title={mockProject.title}
-                    date={mockProject.date}
-                    overview={mockProject.overview}
-                    technologies={mockProject.technologies}
-                    timeline={mockProject.timeline}
-                    role={mockProject.role}
-                    team={mockProject.team}
+                    title={projects.title}
+                    date={projects.dates}
+                    overview={projects.overview}
+                    technologies={projects.technologies}
+                    timeline={projects.timeline}
+                    role={projects.role}
+                    team={projects.teamSize}
                   />
                 </div>
               </div>
               <div className="md:w-[60%] w-[100%] py-6">
                 <div className="h-full bg-background rounded-xl border-2 overflow-y-auto">
-                  <ProjectRightSide
-                    description={mockProject.description}
-                    challenges={mockProject.challenges}
-                    outcomes={mockProject.outcomes}
-                    technicalDetails={mockProject.technicalDetails}
-                  />
+                  <ProjectRightSide sections={projects.sections as { title: string; type: "paragraph" | "list" | "tech-stack" | "grid"; content: string | string[] | TechDetail[]; }[]} />
                 </div>
               </div>
             </div>
@@ -79,7 +116,7 @@ export default function ProjectPage({  }: { params: { id: string } }) {
         </div>
       </div>
       <main className="p-2 sm:hidden">
-        <ProjectLeftSide
+        {/* <ProjectLeftSide
           title={mockProject.title}
           date={mockProject.date}
           overview={mockProject.overview}
@@ -93,7 +130,7 @@ export default function ProjectPage({  }: { params: { id: string } }) {
           challenges={mockProject.challenges}
           outcomes={mockProject.outcomes}
           technicalDetails={mockProject.technicalDetails}
-        />
+        /> */}
       </main>
     </div>
   );

@@ -88,7 +88,7 @@ export function RightSideMain() {
       <div className="hidden sm:block z-10 sticky top-0 bg-background px-4 py-4 rounded-t-xl border-b-2">
         <div className="">
           <Tabs value={activeTab} className="">
-            <TabsList className="h-10 pl-2 pr-2 pt-2 pb-2">
+            <TabsList className="h-10 p-2">
               <TabsTrigger value="work" onClick={() => handleScroll("work")}>
                 Work Experience
               </TabsTrigger>
@@ -123,13 +123,13 @@ export function RightSideMain() {
 
       <section id="work" className="scroll-m-24">
         <div className="flex min-h-0 flex-col gap-y-3 pl-12 pr-12 pt-4 sm:pt-0">
-          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+          <BlurFade delay={BLUR_FADE_DELAY * 2}>
             <h2 className="text-xl font-bold">Work Experience</h2>
           </BlurFade>
           {DATA.work.map((work, id) => (
             <BlurFade
               key={work.company}
-              delay={BLUR_FADE_DELAY * 6 + id * 0.05}
+              delay={BLUR_FADE_DELAY * 2 + id * 0.05}
             >
               <ResumeCard
                 key={work.company}
@@ -148,13 +148,13 @@ export function RightSideMain() {
       </section>
       <section id="education" className="pl-12 pr-12 scroll-m-24">
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 7}>
+          <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <h2 className="text-xl font-bold">Education</h2>
           </BlurFade>
           {DATA.education.map((education, id) => (
             <BlurFade
               key={education.school}
-              delay={BLUR_FADE_DELAY * 8 + id * 0.05}
+              delay={BLUR_FADE_DELAY * 3 + id * 0.05}
             >
               <ResumeCard
                 key={education.school}
@@ -171,7 +171,7 @@ export function RightSideMain() {
       </section>
       <section id="projects" className="pl-12 pr-12 scroll-m-16">
         <div className="space-y-12 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 11}>
+          <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
@@ -181,9 +181,8 @@ export function RightSideMain() {
                   Check out my latest work
                 </h2>
                 <p className="text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  I&apos;ve worked on a variety of projects, from simple
-                  mobile apps to complex robots. Here are a few of my
-                  favorites.
+                  I&apos;ve worked on a variety of projects, from simple mobile
+                  apps to complex robots. Here are a few of my favorites.
                 </p>
               </div>
             </div>
@@ -192,7 +191,7 @@ export function RightSideMain() {
             {DATA.projects.map((project, id) => (
               <BlurFade
                 key={project.title}
-                delay={BLUR_FADE_DELAY * 12 + id * 0.05}
+                delay={BLUR_FADE_DELAY * 4 + id * 0.05}
               >
                 <ProjectCard
                   href={project.href}

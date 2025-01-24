@@ -39,7 +39,7 @@ export function LeftSideMain() {
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
-              <div className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-4xl/none">
+              <div className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-4xl/none px-1">
                 <VerticalCutReveal
                   splitBy="characters"
                   staggerDuration={0.025}
@@ -150,7 +150,7 @@ export function LeftSideMain() {
                   key={category}
                   className="flex flex-nowrap items-top gap-x-2"
                 >
-                  <BlurFade delay={BLUR_FADE_DELAY * 4 + categoryIdx * 0.3}>
+                  <BlurFade delay={BLUR_FADE_DELAY * 4 + categoryIdx * 0.1}>
                     <h3 className="whitespace-nowrap text-sm font-medium text-foreground">
                       {category}:
                     </h3>
@@ -161,8 +161,8 @@ export function LeftSideMain() {
                       <BlurFade
                         key={skill}
                         delay={
-                          BLUR_FADE_DELAY * 10 +
-                          categoryIdx * 0.3 +
+                          BLUR_FADE_DELAY * 4 +
+                          categoryIdx * 0.1 +
                           skillIdx * 0.05
                         }
                       >
@@ -177,7 +177,7 @@ export function LeftSideMain() {
         </div>
       </section>
       <section id="calendar">
-        <BlurFade delay={BLUR_FADE_DELAY * 5}>
+        <BlurFade delay={BLUR_FADE_DELAY * 30}>
           <Popup
             trigger={
               <div>

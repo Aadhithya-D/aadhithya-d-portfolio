@@ -1,77 +1,73 @@
+// ProjectRightSide.tsx
 "use client";
 
 import BlurFade from "./magicui/blur-fade";
 
-interface ProjectRightSideProps {
-  description: string;
-  challenges: string[];
-  outcomes: string[];
-  technicalDetails?: {
-    title: string;
-    content: string;
-  }[];
-}
-const BLUR_FADE_DELAY = 0.04;
+const BLUR_FADE_DELAY = 0.4;
 
-export function ProjectRightSide({
-  description,
-  challenges,
-  outcomes,
-  technicalDetails,
-}: ProjectRightSideProps) {
+
+type TechDetail = {
+  name: string;
+  description: string;
+  icon?: string;
+};
+
+interface ProjectRightSideProps {
+  sections: Array<{
+    title: string;
+    type: "paragraph" | "list" | "grid" | "tech-stack";
+    content: string | string[] | TechDetail[];
+  }>;
+}
+
+export function ProjectRightSide({ sections }: ProjectRightSideProps) {
   return (
     <div className="space-y-8 p-12 mx-auto">
-      <div className="space-y-6">
-        <div className="space-y-4">
-          <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-xl font-bold">Work Experience</h2>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 6}>
-            <p className="text-muted-foreground leading-relaxed">{description}</p>
-          </BlurFade>
-        </div>
+      {sections.map((section, index) => (
+        <BlurFade key={section.title} delay={BLUR_FADE_DELAY * (5 + index)}>
+          <section className="space-y-4">
+            <h2 className="text-xl font-semibold">{section.title}</h2>
+            
+            {section.type === 'paragraph' && (
+              <p className="text-muted-foreground leading-relaxed">
+                {section.content as string}
+              </p>
+            )}
 
-        <div className="space-y-4">
-          <BlurFade delay={BLUR_FADE_DELAY * 7}>
-            <h2 className="text-xl font-semibold">Key Challenges</h2>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 8}>
-            <ul className="space-y-3 list-disc list-inside text-muted-foreground">
-              {challenges.map((challenge, idx) => (
-                <li key={idx}>{challenge}</li>
-              ))}
-            </ul>
-          </BlurFade>
-        </div>
-
-        <div className="space-y-4">
-          <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="text-xl font-semibold">Outcomes</h2>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 10}>
-            <ul className="space-y-3 list-disc list-inside text-muted-foreground">
-              {outcomes.map((outcome, idx) => (
-                <li key={idx}>{outcome}</li>
-              ))}
-            </ul>
-          </BlurFade>
-        </div>
-
-        {technicalDetails && (
-          <div className="space-y-4">
-            <BlurFade delay={BLUR_FADE_DELAY * 11}>
-              <h2 className="text-xl font-semibold">Technical Details</h2>
-            </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 12}>
+            {section.type === 'list' && (
               <ul className="space-y-3 list-disc list-inside text-muted-foreground">
-                {technicalDetails.map((detail, idx) => (
-                  <li key={idx}>{detail.content}</li>
+                {(section.content as string[]).map((item, idx) => (
+                  <li key={idx}>{item}</li>
                 ))}
               </ul>
-            </BlurFade>
-          </div>
-        )}
-      </div>
+            )}
+
+            {section.type === 'grid' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {(section.content as string[]).map((item, idx) => (
+                  <div key={idx} className="p-4 rounded-lg bg-accent/50">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {section.type === 'tech-stack' && (
+              <div className="grid grid-cols-1 gap-4">
+                {(section.content as TechDetail[]).map((tech, idx) => (
+                  <div key={idx} className="flex items-center gap-4 p-4 rounded-lg bg-accent/50">
+                    {tech.icon}
+                    <div>
+                      <h3 className="font-medium">{tech.name}</h3>
+                      <p className="text-sm text-muted-foreground">{tech.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+        </BlurFade>
+      ))}
     </div>
   );
 }

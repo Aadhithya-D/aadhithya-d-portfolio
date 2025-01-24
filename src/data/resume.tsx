@@ -158,9 +158,9 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "",
+      image: "/device.png",
       video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
+        "",
     },
     {
       title: "Magic UI",
@@ -191,8 +191,8 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
-      video: "https://cdn.magicui.design/bento-grid.mp4",
+      image: "/device.png",
+      video: "",
     },
     {
       title: "llm.report",
@@ -224,8 +224,8 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "",
-      video: "https://cdn.llm.report/openai-demo.mp4",
+      image: "/device.png",
+      video: "",
     },
     {
       title: "Automatic Chat",
@@ -252,9 +252,9 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "",
+      image: "/device.png",
       video:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
+        "",
     },
   ],
 } as const;
