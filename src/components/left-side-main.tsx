@@ -3,7 +3,6 @@ import BlurFade from "@/components/magicui/blur-fade";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
-import Navbar from "./navbar";
 import { Badge } from "@/components/ui/badge";
 import VerticalCutReveal from "./fancy/vertical-cut-reveal";
 import ShineBorder from "./ui/shine-border";
@@ -11,8 +10,20 @@ import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
 import Popup from "./pop-up";
 import BookingLayout from "./calendar-component";
+import { ModeToggle } from "@/components/mode-toggle";
+import { CalendarCheck2 } from "lucide-react";
 
 const BLUR_FADE_DELAY = 0.04;
+
+const handleScroll = (id: string) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start", // 'start', 'center', 'end', or 'nearest'
+    });
+  }
+};
 
 export function LeftSideMain() {
   useEffect(() => {
@@ -23,7 +34,7 @@ export function LeftSideMain() {
   }, []);
 
   return (
-    <div className="space-y-8 p-8">
+    <div className="space-y-6 p-8">
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
@@ -76,41 +87,113 @@ export function LeftSideMain() {
         </div>
       </section>
       <section id="about">
-        <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <h2 className="text-xl font-bold">About</h2>
-        </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 4}>
+        <BlurFade delay={BLUR_FADE_DELAY * 2}>
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-foreground dark:prose-invert">
             {DATA.summary}
           </Markdown>
         </BlurFade>
       </section>
+      <BlurFade delay={BLUR_FADE_DELAY * 3}>
+        <div className="flex gap-2 overflow-x-auto flex-nowrap scrollbar-hide">
+          <div
+            className="shrink-0 flex items-center gap-1.5 rounded-lg px-3 py-2 transition-all
+             h-9
+             border-2 border-transparent
+             bg-neutral-100 hover:border-neutral-300
+             dark:bg-neutral-800 dark:hover:border-neutral-500
+             text-neutral-900 hover:text-neutral-900
+             dark:text-neutral-100 dark:hover:text-neutral-100
+             hover:scale-[1.02]"
+            onClick={() => {
+              handleScroll("calendar");
+            }}
+          >
+            <CalendarCheck2 className="h-4 w-4" />
+            <span className="text-sm">Schedule</span>
+          </div>
+          {Object.entries(DATA.contact.social).map(
+            ([platform, { url, icon }]) => (
+              <a
+                key={platform}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 flex items-center justify-center rounded-lg p-2 transition-all
+                 h-9 w-9
+                 border-2 border-transparent
+                 bg-neutral-100 hover:border-neutral-300
+                 dark:bg-neutral-800 dark:hover:border-neutral-500
+                 text-neutral-900 hover:text-neutral-900
+                 dark:text-neutral-100 dark:hover:text-neutral-100
+                 hover:scale-[1.02]"
+                aria-label={`Visit my ${platform} profile`}
+              >
+                {icon({
+                  className: "h-4 w-4",
+                })}
+              </a>
+            )
+          )}
+          <ModeToggle />
+        </div>
+      </BlurFade>
+
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 9}>
+          <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <h2 className="text-xl font-bold">Skills</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-1">
-            {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <Badge key={skill}>{skill}</Badge>
-              </BlurFade>
-            ))}
+          <div className="space-y-3">
+            {Object.entries(DATA.skills.categories).map(
+              ([category, skills], categoryIdx) => (
+                <div
+                  key={category}
+                  className="flex flex-nowrap items-top gap-x-2"
+                >
+                  <BlurFade delay={BLUR_FADE_DELAY * 4 + categoryIdx * 0.3}>
+                    <h3 className="whitespace-nowrap text-sm font-medium text-foreground">
+                      {category}:
+                    </h3>
+                  </BlurFade>
+
+                  <div className="flex flex-wrap gap-1">
+                    {skills.map((skill, skillIdx) => (
+                      <BlurFade
+                        key={skill}
+                        delay={
+                          BLUR_FADE_DELAY * 10 +
+                          categoryIdx * 0.3 +
+                          skillIdx * 0.05
+                        }
+                      >
+                        <Badge className="text-xs">{skill}</Badge>
+                      </BlurFade>
+                    ))}
+                  </div>
+                </div>
+              )
+            )}
           </div>
         </div>
       </section>
-      <Navbar />
-      
-      <Popup
-        trigger={<div><BookingLayout /></div>}
-      >
-        <Cal
-          namespace="15min"
-          calLink="aadhithya-d/15min"
-          style={{ width: "100%", height: "100%", overflow: "scroll" }}
-          config={{ layout: "month_view" }}
-        />
-      </Popup>
+      <section id="calendar">
+        <BlurFade delay={BLUR_FADE_DELAY * 5}>
+          <Popup
+            trigger={
+              <div>
+                <BookingLayout />
+              </div>
+            }
+          >
+            <Cal
+              namespace="15min"
+              calLink="aadhithya-d/15min"
+              style={{ width: "100%", height: "100%", overflow: "scroll" }}
+              config={{ layout: "month_view" }}
+            />
+          </Popup>
+        </BlurFade>
+      </section>
     </div>
   );
 }

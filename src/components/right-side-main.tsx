@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import Link from "next/link";
-import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
@@ -183,7 +182,7 @@ export function RightSideMain() {
                 </h2>
                 <p className="text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   I&apos;ve worked on a variety of projects, from simple
-                  websites to complex web applications. Here are a few of my
+                  mobile apps to complex robots. Here are a few of my
                   favorites.
                 </p>
               </div>
@@ -213,7 +212,7 @@ export function RightSideMain() {
       </section>
       <section id="hackathons" className="pl-12 pr-12 scroll-m-16">
         <div className="space-y-12 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 13}>
+          {/* <BlurFade delay={BLUR_FADE_DELAY * 13}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
@@ -232,8 +231,8 @@ export function RightSideMain() {
                 </p>
               </div>
             </div>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 14}>
+          </BlurFade> */}
+          {/* <BlurFade delay={BLUR_FADE_DELAY * 14}>
             <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
               {DATA.hackathons.map((project, id) => (
                 <BlurFade
@@ -251,7 +250,7 @@ export function RightSideMain() {
                 </BlurFade>
               ))}
             </ul>
-          </BlurFade>
+          </BlurFade> */}
         </div>
       </section>
       <section id="contact" className="pl-12 pr-12">

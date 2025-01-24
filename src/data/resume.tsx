@@ -7,24 +7,22 @@ export const DATA = {
   location: "Chennai, IN",
   locationLink: "https://www.google.com/maps/place/chennai",
   description:
-    "Software Engineer turned Entrepreneur. I love building things and helping people.",
+    "Student Entrepreneur. I love building things and helping people.",
   summary:
-    "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
+  "In 2024, I decided to commit full time to Recruitr AI, an AI-powered platform streamlining hiring for companies at sacle. As a final-year computer science student at VIT Chennai with hands-on experience in diverse areas gained through internships at Ford, FLSmidth, and Bhai AR, I focus on building impactful solutions to real-world problems. Beyond my startup, I like actively sharing knowledge through workshops on AI and various other technologies. I have participated in hackathons (with multiple wins). I am driven by a belief that great engineering combines simplicity, impact, and a constant pursuit of learning, whether through startups, robotics, or education.",
   avatarUrl: "/me2.jpg",
-  skills: [
-    "Flutter",
-    "Android",
-    "iOS",
-    "Next.js",
-    "Postgres",
-    "Docker",
-    "Typescript",
-    "Python",
-    "Kotlin",
-    "Swift",
-    "Java",
-    "C++",
-  ],
+  skills: {
+    categories: {
+      Mobile: ["Flutter", "Android", "iOS", "Jetpack Compose", "SwiftUI"],
+      Web: ["Next.js", "React"],
+      Backend: ["FastAPI", "Django", "Flask", "Spring"],
+      AI: ["LLMs", "GenAI", "Machine Learning", "TensorFlow Lite", "Diffusors", "LangChain", "RAG"],
+      Heardware: ["Raspberry Pi", "Arduino", "ESP32", "ESP8266"],
+      Database: ["Postgres", "MongoDB", "SQL", "Supabase", "Firebase"],
+      DevOps: ["Docker", "CI/CD (GitHub Actions)", "Cloud Computing (GCP, Azure)", "Git"],
+      Languages: ["TypeScript", "Python", "Java", "C++", "Dart", "R", "SQL", "Kotlin", "Swift"]
+    }
+  },
   contact: {
     email: "aadhithya.d2003@gmail.com",
     tel: "+91 8056603178",
@@ -258,18 +256,5 @@ export const DATA = {
       video:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
     },
-  ],
-  hackathons: [
-    {
-      title: "Hack Western 5",
-      dates: "November 23rd - 25th, 2018",
-      location: "London, Ontario",
-      description:
-        "Developed a mobile application which delivered bedtime stories to children using augmented reality.",
-      image:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/hack-western.png",
-      mlh: "https://s3.amazonaws.com/logged-assets/trust-badge/2019/mlh-trust-badge-2019-white.svg",
-      links: [],
-    }
   ],
 } as const;
