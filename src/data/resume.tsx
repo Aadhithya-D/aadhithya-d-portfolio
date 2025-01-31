@@ -159,8 +159,7 @@ export const DATA = {
         },
       ],
       image: "/device.png",
-      video:
-        "",
+      video: "",
     },
     {
       title: "Magic UI",

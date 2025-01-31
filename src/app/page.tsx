@@ -1,6 +1,6 @@
 "use client";
-import { LeftSideMain } from "@/components/left-side-main";
-import { RightSideMain } from "@/components/right-side-main";
+import { LeftSideMain } from "@/app/components/main-left-side";
+import { RightSideMain } from "@/app/components/main-right-side";
 import GridPattern from "@/components/ui/grid-pattern";
 
 export default function Home() {

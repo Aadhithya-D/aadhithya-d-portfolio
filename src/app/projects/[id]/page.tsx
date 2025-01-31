@@ -1,84 +1,19 @@
-"use client";
-
-import { ProjectLeftSide } from "@/components/project-left-side";
-import { ProjectRightSide } from "@/components/project-right-side";
+// app/projects/[id]/page.tsx
+import { notFound } from "next/navigation";
+import { ProjectLeftSide } from "@/app/projects/[id]/components/project-left-side";
+import { ProjectRightSide } from "@/app/projects/[id]/components/project-right-side";
 import GridPattern from "@/components/ui/grid-pattern";
-import { Globe } from "lucide-react";
+import { projects } from "@/data/projects";
 
-type TechDetail = {
-  name: string;
-  description: string;
-  icon?: string;
-};
+export default function ProjectPage({ params }: { params: { id: string } }) {
+  const project = projects[params.id];
+  console.log(project);
 
-const projects = 
-  {
-    title: "Chat Collect",
-    href: "https://chatcollect.com",
-    dates: "Jan 2024 - Feb 2024",
-    active: true,
-    timeline: "6 Weeks",
-    role: "Full-stack Developer",
-    teamSize: "1",
-    overview: "With the release of the OpenAI GPT Store...",
-    technologies: ["Next.js", "Typescript", "PostgreSQL"],
-    media: {
-      type: "video",
-      url: "https://pub-83c5db439b40468498f97946200806f7.r2.dev/chat-collect.mp4",
-      alt: "Chat Collect Demo"
-    },
-    sections: [
-      {
-        title: "Project Overview",
-        type: "paragraph",
-        content: "Detailed description of the project goals and vision..."
-      },
-      {
-        title: "Technical Challenges",
-        type: "list",
-        content: [
-          "Implementing real-time analytics with WebSockets",
-          "Handling rate limiting for OpenAI API",
-          "Ensuring GDPR compliance for user data"
-        ]
-      },
-      {
-        title: "Tech Stack Deep Dive",
-        type: "tech-stack",
-        content: [
-          {
-            name: "Next.js App Router",
-            description: "Handled dynamic routing and server-side rendering",
-            icon: "nextjs"
-          },
-          {
-            name: "Prisma ORM",
-            description: "Used for database schema management",
-            icon: "prisma"
-          }
-        ]
-      },
-      {
-        title: "Key Outcomes",
-        type: "grid",
-        content: [
-          "Reduced API costs by 40% through caching",
-          "Achieved 99.9% uptime with Cloudflare",
-          "Onboarded 500+ active users in first month"
-        ]
-      }
-    ],
-    links: [
-      {
-        type: "Website",
-        href: "https://chatcollect.com",
-        icon: <Globe className="size-3" />
-      }
-    ]
+  if (!project) {
+    notFound();
   }
 
 
-export default function ProjectPage({  }: { params: { id: string } }) {
   return (
     <div className="">
       <div className="hidden sm:block">
@@ -96,19 +31,20 @@ export default function ProjectPage({  }: { params: { id: string } }) {
               <div className="md:w-[40%] w-[100%] py-6">
                 <div className="h-full bg-background border-2 rounded-xl overflow-y-auto">
                   <ProjectLeftSide
-                    title={projects.title}
-                    date={projects.dates}
-                    overview={projects.overview}
-                    technologies={projects.technologies}
-                    timeline={projects.timeline}
-                    role={projects.role}
-                    team={projects.teamSize}
+                    title={project.title}
+                    date={project.dates}
+                    overview={project.overview}
+                    technologies={project.technologies}
+                    timeline={project.timeline}
+                    role={project.role}
+                    team={project.teamSize}
+                    media={project.media}
                   />
                 </div>
               </div>
               <div className="md:w-[60%] w-[100%] py-6">
                 <div className="h-full bg-background rounded-xl border-2 overflow-y-auto">
-                  <ProjectRightSide sections={projects.sections as { title: string; type: "paragraph" | "list" | "tech-stack" | "grid"; content: string | string[] | TechDetail[]; }[]} />
+                  <ProjectRightSide markdown={project.markdown} />
                 </div>
               </div>
             </div>
@@ -116,21 +52,16 @@ export default function ProjectPage({  }: { params: { id: string } }) {
         </div>
       </div>
       <main className="p-2 sm:hidden">
-        {/* <ProjectLeftSide
-          title={mockProject.title}
-          date={mockProject.date}
-          overview={mockProject.overview}
-          technologies={mockProject.technologies}
-          timeline={mockProject.timeline}
-          role={mockProject.role}
-          team={mockProject.team}
+        <ProjectLeftSide
+          title={project.title}
+          date={project.dates}
+          overview={project.overview}
+          technologies={project.technologies}
+          timeline={project.timeline}
+          role={project.role}
+          team={project.teamSize}
         />
-        <ProjectRightSide
-          description={mockProject.description}
-          challenges={mockProject.challenges}
-          outcomes={mockProject.outcomes}
-          technicalDetails={mockProject.technicalDetails}
-        /> */}
+        <ProjectRightSide markdown={project.markdown} />
       </main>
     </div>
   );

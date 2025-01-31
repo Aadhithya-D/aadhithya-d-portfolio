@@ -1,11 +1,12 @@
 "use client";
 
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import BlurFade from './magicui/blur-fade';
-import { Badge } from './ui/badge';
+import BlurFade from "../../../../components/magicui/blur-fade";
+import { Badge } from "../../../../components/ui/badge";
+import ShineBorder from "../../../../components/ui/shine-border";
 
 interface ProjectLeftSideProps {
   title: string;
@@ -32,11 +33,7 @@ export function ProjectLeftSide({
   timeline,
   role,
   team,
-  media = {
-    type: "image",
-    url: "/device.png",
-    alt: "Project preview"
-  }
+  media
 }: ProjectLeftSideProps) {
   const router = useRouter();
 
@@ -49,16 +46,18 @@ export function ProjectLeftSide({
           onClick={() => router.back()}
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          <div className="ml-auto px-3 py-1 text-xs rounded-md bg-accent/50 text-accent-foreground">{date}</div>
+          <div className="ml-auto px-3 py-1 text-xs rounded-md bg-accent/50 text-accent-foreground">
+            {date}
+          </div>
         </Button>
       </BlurFade>
 
-      <div className='space-y-6'>
+      <div className="space-y-6">
         <div className="space-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 2}>
             <div className="text-3xl font-semibold tracking-tight">{title}</div>
           </BlurFade>
-          
+
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
             <div className="flex flex-wrap gap-2 text-sm text-muted-foreground">
               <span>{timeline}</span>
@@ -71,8 +70,14 @@ export function ProjectLeftSide({
         </div>
 
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
+        <ShineBorder
+                className="w-full"
+                color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+                borderWidth={3}
+                borderRadius={8}
+              >
           <div className="relative aspect-video rounded-lg overflow-hidden border">
-            {media.type === "image" ? (
+            {media?.type === "image" ? (
               <Image
                 src={media.url}
                 alt={media.alt || "Project preview"}
@@ -81,9 +86,10 @@ export function ProjectLeftSide({
                 priority
               />
             ) : (
-              <video controls className="w-full h-full object-cover" />
+              <video controls autoPlay loop className="w-full h-full object-cover" src={media?.url}/>
             )}
           </div>
+        </ShineBorder>
         </BlurFade>
 
         <BlurFade delay={BLUR_FADE_DELAY * 5}>

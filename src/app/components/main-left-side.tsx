@@ -4,12 +4,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
 import { Badge } from "@/components/ui/badge";
-import VerticalCutReveal from "./fancy/vertical-cut-reveal";
-import ShineBorder from "./ui/shine-border";
+import VerticalCutReveal from "../../components/fancy/vertical-cut-reveal";
+import ShineBorder from "../../components/ui/shine-border";
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { useEffect } from "react";
-import Popup from "./pop-up";
-import BookingLayout from "./calendar-component";
+import Popup from "../../components/pop-up";
+import BookingLayout from "../../components/calendar-component";
 import { ModeToggle } from "@/components/mode-toggle";
 import { CalendarCheck2 } from "lucide-react";
 
@@ -94,9 +94,9 @@ export function LeftSideMain() {
         </BlurFade>
       </section>
       <BlurFade delay={BLUR_FADE_DELAY * 3}>
-        <div className="flex gap-2 overflow-x-auto flex-nowrap scrollbar-hide">
+        <div className="flex flex-wrap gap-2">
           <div
-            className="shrink-0 flex items-center gap-1.5 rounded-lg px-3 py-2 transition-all
+            className="hidden md:flex items-center gap-1.5 rounded-lg px-3 py-2 transition-all
              h-9
              border-2 border-transparent
              bg-neutral-100 hover:border-neutral-300
@@ -108,7 +108,7 @@ export function LeftSideMain() {
               handleScroll("calendar");
             }}
           >
-            <CalendarCheck2 className="h-4 w-4" />
+            <CalendarCheck2 className="h-4 w-4 " />
             <span className="text-sm">Schedule</span>
           </div>
           {Object.entries(DATA.contact.social).map(
@@ -118,7 +118,7 @@ export function LeftSideMain() {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="shrink-0 flex items-center justify-center rounded-lg p-2 transition-all
+                className="flex items-center justify-center rounded-lg p-2 transition-all
                  h-9 w-9
                  border-2 border-transparent
                  bg-neutral-100 hover:border-neutral-300
