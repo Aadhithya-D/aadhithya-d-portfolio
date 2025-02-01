@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import { ArrowUpRight } from "lucide-react";
 
 interface Props {
   title: string;
@@ -44,9 +45,12 @@ export function ProjectCard({
   return (
     <Card
       className={
-        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"
+        "flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full relative"
       }
     >
+      <div className="absolute top-2 right-2 text-muted-foreground">
+        <ArrowUpRight className="h-4 w-4 font-bold" />
+      </div>
       <div className={cn("block", className)}>
         <Link href={`/projects/${title.toLowerCase().replace(/ /g, "-")}`} className="block">
           <div className="relative h-40 w-full">

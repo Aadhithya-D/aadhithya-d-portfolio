@@ -16,7 +16,7 @@ export const fitNut = {
     ],
     media: {
       type: "image",
-      url: "/fitnut-app.png",
+      url: "/fitnut_16x9.png",
       alt: "FitNut App UI",
     },
     markdown:  `
@@ -28,10 +28,7 @@ export const fitNut = {
 FitNut is a **Flutter-based fitness application** that uses **MLKit for real-time pose detection**. The app tracks workout repetitions, assigns scores based on accuracy and performance, and updates a leaderboard to keep users motivated.  
 
 ## 📸 Screenshots  
-<p float="left">
-  <img src="1.jpg" width="33%" />
-  <img src="2.jpg" width="33%" />
-</p>  
+![Screenshot 1](/fitnut1.png)
 
 ## 🚀 Requirements  
 - Flutter SDK  
