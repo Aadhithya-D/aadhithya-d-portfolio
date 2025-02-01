@@ -33,7 +33,7 @@ export function ProjectRightSide({ markdown }: ProjectRightSideProps) {
             ),
             h2: ({ node, ...props }) => (
               <h2
-                className="text-3xl max-w-full text-pretty font-sans font-bold tracking-tight mb-6 first:mt-0"
+                className="text-3xl max-w-full text-pretty font-sans font-bold tracking-tight mt-8 mb-6 first:mt-0"
                 {...props}
               />
             ),

@@ -43,7 +43,7 @@ export function ProjectLeftSide({
         <Button
           variant="ghost"
           className="px-0 w-full hover:bg-transparent text-muted-foreground"
-          onClick={() => router.back()}
+          onClick={() => router.push("/")}
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           <div className="ml-auto px-3 py-1 text-xs rounded-md bg-accent/50 text-accent-foreground">

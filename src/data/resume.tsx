@@ -3,7 +3,7 @@ import { Icons } from "@/components/icons";
 export const DATA = {
   name: "Aadhithya D",
   initials: "AD",
-  url: "https://dillion.io",
+  url: "https://aadhithya-d.vercel.app/",
   location: "Chennai, IN",
   locationLink: "https://www.google.com/maps/place/chennai",
   description:
@@ -135,63 +135,58 @@ export const DATA = {
   ],
   projects: [
     {
-      title: "Chat Collect",
-      href: "https://chatcollect.com",
-      dates: "Jan 2024 - Feb 2024",
-      active: true,
-      description:
-        "With the release of the [OpenAI GPT Store](https://openai.com/blog/introducing-the-gpt-store), I decided to build a SaaS which allows users to collect email addresses from their GPT users. This is a great way to build an audience and monetize your GPT API usage.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
-      ],
-      links: [
+      title: "RoboGPT",
+    href: "https://your-project-link.com",
+    dates: "Oct 2024 - Nov 2024",
+    active: true,
+    timeline: "4 Weeks",
+    description: "RoboGPT is an AI-powered voice-activated robotic arm that integrates natural language processing with computer vision to execute real-world tasks. By leveraging YOLO-based object detection and LLM-powered task planning, RoboGPT enables seamless interaction between humans and robotics, making it ideal for industrial automation and assistive robotics.",
+    technologies: [
+        "Python",
+        "YOLO",
+        "OpenCV",
+        "Natural Language Processing",
+        "Robotics",
+        "LLM",
+        "Agents",
+        "Flutter",
+        "Firebase"
+    ],
+    "links": [
         {
-          type: "Website",
-          href: "https://chatcollect.com",
-          icon: <Icons.globe className="size-3" />,
-        },
+          "type": "LinkedIn",
+          "href": "https://www.linkedin.com/posts/aadhithya-d_continuing-the-series-of-projects-today-activity-7282262352501055489-2Zst",
+          "icon": <Icons.linkedin className='size-3' />
+        }
       ],
-      image: "/device.png",
-      video: "",
+    "image": "/robo_1.webp",
+    "video": ""
     },
     {
-      title: "Magic UI",
-      href: "https://magicui.design",
-      dates: "June 2023 - Present",
-      active: true,
-      description:
-        "Designed, developed and sold animated UI components for developers.",
-      technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Stripe",
-        "Shadcn UI",
-        "Magic UI",
+      "title": "FalconSight",
+      "href": "https://www.linkedin.com/posts/aadhithya-d_continuing-the-series-of-projects-today-activity-7282262352501055489-2Zst",
+      "dates": "Oct 2024 - Nov 2024",
+      "active": true,
+      "description":
+        "FalconSight is an AI-powered drone-based emergency detection system that leverages deep learning, computer vision, and real-time video processing to identify critical situations such as human distress, SOS gestures, and emergency text signs. Designed for rapid response in inaccessible areas, FalconSight combines mini-drone technology with secure communication protocols for efficient surveillance and disaster management.",
+      "technologies": [
+        "Deep Learning",
+        "Computer Vision",
+        "OCR",
+        "Mini-Drone Technology",
+        "Real-time Video Processing",
+        "WiFi Modules",
+        "Gesture Recognition"
       ],
-      links: [
+      "links": [
         {
-          type: "Website",
-          href: "https://magicui.design",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/magicuidesign/magicui",
-          icon: <Icons.github className="size-3" />,
-        },
+          "type": "GitHub",
+          "href": "https://github.com/Aadhithya-D/Drone-Cam-Analysis",
+          "icon": <Icons.github className='size-3' />
+        }
       ],
-      image: "/device.png",
-      video: "",
+      "image": "/drone1.png",
+      "video": ""
     },
     {
       title: "llm.report",

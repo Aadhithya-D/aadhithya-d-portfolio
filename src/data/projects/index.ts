@@ -1,5 +1,6 @@
 // data/projects/index.ts
-import { chatCollect } from "@/data/projects/chat-collect.ts";
+import { falconSight } from "@/data/projects/falcon-sight.ts";
+import { roboGPT } from "./robogpt";
 export type Project = {
     title: string;
     href: string;
@@ -24,7 +25,8 @@ export type Project = {
 };
 
 export const projects: Record<string, Project> = {
-  "chat-collect": chatCollect as unknown as Project,
+  "falconsight": falconSight as unknown as Project,
+  "robogpt": roboGPT as unknown as Project,
   // Add more projects here
 };
 

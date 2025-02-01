@@ -64,12 +64,15 @@ export function ProjectCard({
                 className="pointer-events-none absolute inset-0 h-full w-full object-cover object-top"
               />
             ) : image ? (
-              <Image
-                src={image}
-                alt={title}
-                fill
-                className="absolute inset-0 object-cover object-top"
-              />
+              <div className="relative w-full h-full bg-gradient-to-b from-muted/10 via-muted/20 to-muted/30 dark:from-muted/5 dark:via-muted/10 dark:to-muted/15">
+                <Image
+                  src={image}
+                  alt={title}
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-contain mix-blend-normal"
+                />
+              </div>
             ) : null}
           </div>
         </Link>
