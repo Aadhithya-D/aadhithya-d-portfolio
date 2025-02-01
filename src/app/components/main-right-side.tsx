@@ -104,12 +104,12 @@ export function RightSideMain() {
               >
                 Projects
               </TabsTrigger>
-              <TabsTrigger
+              {/* <TabsTrigger
                 value="hackathons"
                 onClick={() => handleScroll("hackathons")}
               >
                 Hackathons
-              </TabsTrigger>
+              </TabsTrigger> */}
               <TabsTrigger
                 value="contact"
                 onClick={() => handleScroll("contact")}
@@ -209,9 +209,9 @@ export function RightSideMain() {
           </div>
         </div>
       </section>
-      <section id="hackathons" className="pl-12 pr-12 scroll-m-16">
+      {/* <section id="hackathons" className="pl-12 pr-12 scroll-m-16">
         <div className="space-y-12 w-full py-12">
-          {/* <BlurFade delay={BLUR_FADE_DELAY * 13}>
+          <BlurFade delay={BLUR_FADE_DELAY * 13}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
@@ -230,8 +230,8 @@ export function RightSideMain() {
                 </p>
               </div>
             </div>
-          </BlurFade> */}
-          {/* <BlurFade delay={BLUR_FADE_DELAY * 14}>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 14}>
             <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
               {DATA.hackathons.map((project, id) => (
                 <BlurFade
@@ -249,9 +249,9 @@ export function RightSideMain() {
                 </BlurFade>
               ))}
             </ul>
-          </BlurFade> */}
+          </BlurFade>
         </div>
-      </section>
+      </section> */}
       <section id="contact" className="pl-12 pr-12">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>

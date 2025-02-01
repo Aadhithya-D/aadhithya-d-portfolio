@@ -1,6 +1,8 @@
 // data/projects/index.ts
 import { falconSight } from "@/data/projects/falcon-sight.ts";
 import { roboGPT } from "./robogpt";
+import { fitNut } from "./fitnut";
+import { drippyAI } from "./drippyai";
 export type Project = {
     title: string;
     href: string;
@@ -27,9 +29,6 @@ export type Project = {
 export const projects: Record<string, Project> = {
   "falconsight": falconSight as unknown as Project,
   "robogpt": roboGPT as unknown as Project,
-  // Add more projects here
+  "fitnut": fitNut as unknown as Project,
+  "drippy-ai": drippyAI as unknown as Project,
 };
-
-// Create a type definition file
-// types/project.d.ts
-

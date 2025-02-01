@@ -7,8 +7,6 @@ import { projects } from "@/data/projects";
 
 export default function ProjectPage({ params }: { params: { id: string } }) {
   const project = projects[params.id];
-  console.log(project);
-
   if (!project) {
     notFound();
   }

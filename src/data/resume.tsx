@@ -57,8 +57,8 @@ export const DATA = {
       start: "January 2024",
       end: "Present",
       description:
-        "Recruitr AI stands as a transformative force in tech hiring, offering a tailored SaaS platform. Our unique value proposition lies in the integration of AI-driven features and customizable pipelines, ensuring a holistic evaluation process that aligns with the dynamic needs of innovative companies. Focused on scalability and high-performance team building, we differentiate ourselves by providing an adaptable solution that addresses the distinct challenges of our target market, setting the stage for a new era in recruitment efficiency and talent acquisition.",
-    },
+        "Recruitr AI is an AI-powered HR tech platform that streamlines the hiring process. It features an AI Interviewer Agent for conducting customizable video interviews, offering multilingual support, automated follow-up questions, and detailed candidate evaluations. The platform also includes a Talent Sourcing Bot to source candidates from various platforms based on job descriptions, along with features like proctoring, video recording, and ATS integration."
+      },
     {
       company: "FLSmidth",
       badges: [],
@@ -183,72 +183,76 @@ export const DATA = {
           "type": "GitHub",
           "href": "https://github.com/Aadhithya-D/Drone-Cam-Analysis",
           "icon": <Icons.github className='size-3' />
+        },
+        {
+          "type": "LinkedIn",
+          "href": "https://www.linkedin.com/posts/aadhithya-d_hello-everyone-just-got-around-12k-impressions-activity-7281967189681680385-CP_o?utm_source=share&utm_medium=member_desktop",
+          "icon": <Icons.linkedin className='size-3' />
         }
       ],
       "image": "/drone1.png",
       "video": ""
     },
     {
-      title: "llm.report",
-      href: "https://llm.report",
-      dates: "April 2023 - September 2023",
+      title: "FitNut",
+      href: "https://your-project-link.com",
+      dates: "January 2023 - February 2023",
       active: true,
-      description:
-        "Developed an open-source logging and analytics platform for OpenAI: Log your ChatGPT API requests, analyze costs, and improve your prompts.",
+      description: "FitNut is a Flutter-based fitness application that uses MLKit for real-time pose detection, accurately counting reps, scoring workouts, and updating a leaderboard to enhance motivation.",
       technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
+          "Flutter",
+          "MLKit",
+          "Firebase",
+          "Dart",
+          "Google Cloud Platform"
       ],
       links: [
         {
-          type: "Website",
-          href: "https://llm.report",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/dillionverma/llm.report",
+          type: "GitHub",
+          href: "https://github.com/Aadhithya-D/FitNut",
           icon: <Icons.github className="size-3" />,
         },
+        {
+          type: "LinkedIn",
+          href: "https://www.linkedin.com/posts/aadhithya-d_hey-connections-it-is-my-immense-pleasure-activity-7027231878566875136-YCoQ",
+          icon: <Icons.linkedin className="size-3" />,
+        },
       ],
-      image: "/device.png",
+      image: "/fitnut1.png",
       video: "",
     },
     {
-      title: "Automatic Chat",
-      href: "https://automatic.chat",
-      dates: "April 2023 - March 2024",
+      title: "Drippy AI",
+      href: "https://drippy.ai",
+      dates: "August 2023",
       active: true,
       description:
-        "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
+        "Drippy AI is a cutting-edge fashion companion that provides personalized outfit recommendations, fashion trend analysis, and sample image generation through an interactive app and website.",
       technologies: [
-        "Next.js",
-        "Typescript",
-        "PostgreSQL",
-        "Prisma",
-        "TailwindCSS",
-        "Shadcn UI",
-        "Magic UI",
-        "Stripe",
-        "Cloudflare Workers",
+        "Flutter",
+        "Firebase",
+        "Dart",
+        "TypeScript",
+        "Next.JS",
+        "LLM",
+        "Stable Diffusion",
+        "ControlNet",
+        "Flipkart API"
       ],
       links: [
         {
-          type: "Website",
-          href: "https://automatic.chat",
+          type: "Presentation",
+          href: "https://www.canva.com/design/DAFtCTJMJrQ/la0iVwZ4Ruv98SkuEJOsIg/edit?utm_content=DAFtCTJMJrQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
           icon: <Icons.globe className="size-3" />,
         },
+        {
+          type: "GitHub",
+          href: "https://github.com/Aadhithya-D/Drippy.AI",
+          icon: <Icons.github className="size-3" />,
+        },
       ],
-      image: "/device.png",
-      video:
-        "",
-    },
+      image: "/DrippyAI.gif",
+      video: "",
+    }
   ],
 } as const;
