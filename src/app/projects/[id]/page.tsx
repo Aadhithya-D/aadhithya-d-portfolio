@@ -27,7 +27,7 @@ export default async function ProjectPage({ params }: { params: { id: string } }
           <main className="h-[100vh] p-6 w-full relative">
             <div className="flex h-[calc(100%+3rem)] w-full -my-6 -mb-8 gap-3 flex-col md:flex-row">
               <div className="md:w-[40%] w-[100%] py-6">
-                <div className="h-full bg-background border-2 rounded-xl overflow-y-auto">
+                <div className="h-full bg-background border-2 rounded-xl overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                   <ProjectLeftSide
                     title={project.title}
                     date={project.dates}
@@ -41,7 +41,7 @@ export default async function ProjectPage({ params }: { params: { id: string } }
                 </div>
               </div>
               <div className="md:w-[60%] w-[100%] py-6">
-                <div className="h-full bg-background rounded-xl border-2 overflow-y-auto">
+                <div className="h-full bg-background rounded-xl border-2 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                   <ProjectRightSide markdown={project.markdown} />
                 </div>
               </div>
