@@ -5,7 +5,7 @@ import { ProjectRightSide } from "@/app/projects/[id]/components/project-right-s
 import GridPattern from "@/components/ui/grid-pattern";
 import { projects } from "@/data/projects";
 
-export default function ProjectPage({ params }: { params: { id: string } }) {
+export default async function ProjectPage({ params }: { params: { id: string } }) {
   const project = projects[params.id];
   if (!project) {
     notFound();
@@ -58,6 +58,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
           timeline={project.timeline}
           role={project.role}
           team={project.teamSize}
+          media={project.media}
         />
         <ProjectRightSide markdown={project.markdown} />
       </main>
