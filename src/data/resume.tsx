@@ -9,7 +9,7 @@ export const DATA = {
   description:
     "Student Entrepreneur. I love building things and helping people.",
   summary:
-  "In 2024, I decided to commit full time to Recruitr AI, an AI-powered platform streamlining hiring for companies at sacle. As a final-year computer science student at VIT Chennai with hands-on experience in diverse areas gained through internships at Ford, FLSmidth, and Bhai AR, I focus on building impactful solutions to real-world problems. Beyond my startup, I like actively sharing knowledge through workshops on AI and various other technologies. I have participated in hackathons (with multiple wins). I am driven by a belief that great engineering combines simplicity, impact, and a constant pursuit of learning, whether through startups, robotics, or education.",
+  "In 2024, I decided to commit full time to Recruitr AI, an AI-powered platform streamlining hiring for companies at scale. As a final-year computer science student at VIT Chennai with hands-on experience in diverse areas gained through internships at Ford, FLSmidth, and Bhai AR, I focus on building impactful solutions to real-world problems. Beyond my startup, I like actively sharing knowledge through workshops on AI and various other technologies. I have participated in hackathons (with multiple wins). I am driven by a belief that great engineering combines simplicity, impact, and a constant pursuit of learning, whether through startups, robotics, or education.",
   avatarUrl: "/me2.jpg",
   skills: {
     categories: {
@@ -17,7 +17,7 @@ export const DATA = {
       Web: ["Next.js", "React"],
       Backend: ["FastAPI", "Django", "Flask", "Spring"],
       AI: ["LLMs", "GenAI", "Machine Learning", "TensorFlow Lite", "Diffusors", "LangChain", "RAG"],
-      Heardware: ["Raspberry Pi", "Arduino", "ESP32", "ESP8266"],
+      Hardware: ["Raspberry Pi", "Arduino", "ESP32", "ESP8266"],
       Database: ["Postgres", "MongoDB", "SQL", "Supabase", "Firebase"],
       DevOps: ["Docker", "CI/CD (GitHub Actions)", "Cloud Computing (GCP, Azure)", "Git"],
       Languages: ["TypeScript", "Python", "Java", "C++", "Dart", "R", "SQL", "Kotlin", "Swift"]
