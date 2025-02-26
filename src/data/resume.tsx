@@ -49,7 +49,7 @@ export const DATA = {
   work: [
     {
       company: "Recruitr AI",
-      href: "https://recruitrai.azurewebsites.net/",
+      href: "https://recruitrai.com",
       badges: [],
       location: "Chennai, Tamil Nadu, India",
       title: "CEO & Co-Founder",
