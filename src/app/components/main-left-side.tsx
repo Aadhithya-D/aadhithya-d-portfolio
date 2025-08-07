@@ -70,14 +70,14 @@ export function LeftSideMain() {
                 </VerticalCutReveal>
               </div>
             </div>
-            <BlurFade delay={BLUR_FADE_DELAY}>
+            <BlurFade delay={BLUR_FADE_DELAY} className="flex-shrink-0 block sm:hidden lg:block">
               <ShineBorder
                 className="inline-flex"
                 color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
                 borderRadius={9999}
                 borderWidth={3}
               >
-                <Avatar className="size-28 border">
+                <Avatar className="size-28 sm:size-20 lg:size-28 border">
                   <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                   <AvatarFallback>{DATA.initials}</AvatarFallback>
                 </Avatar>
