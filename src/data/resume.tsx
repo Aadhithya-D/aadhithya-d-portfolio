@@ -7,9 +7,9 @@ export const DATA = {
   location: "Chennai, IN",
   locationLink: "https://www.google.com/maps/place/chennai",
   description:
-    "Student Entrepreneur. I love building things and helping people.",
+    "Entrepreneur and Engineer. I love building things.",
   summary:
-  "In 2024, I decided to commit full time to Recruitr AI, an AI-powered platform streamlining hiring for companies at scale. As a final-year computer science student at VIT Chennai with hands-on experience in diverse areas gained through internships at Ford, FLSmidth, and Bhai AR, I focus on building impactful solutions to real-world problems. Beyond my startup, I like actively sharing knowledge through workshops on AI and various other technologies. I have participated in hackathons (with multiple wins). I am driven by a belief that great engineering combines simplicity, impact, and a constant pursuit of learning, whether through startups, robotics, or education.",
+  "Founder of [Vakyam AI](https://vakyam.ai), a voice AI platform enabling human-like, multilingual conversations for the Indian market. Previously, I founded [Recruitr AI](https://recruitrai.com), where we secured international funding and onboarded paying customers globally. Computer Science graduate from VIT Chennai. Backed by internship experience at Ford and FLSmidth, multiple hackathon wins, and a focus on solving real-world problems, I chose to forgo placements to build products that push the boundaries of what's possible with AI.",
   avatarUrl: "/me2.jpg",
   skills: {
     categories: {
@@ -48,16 +48,28 @@ export const DATA = {
 
   work: [
     {
-      company: "Recruitr AI",
-      href: "https://recruitrai.azurewebsites.net/",
+      company: "Vakyam AI",
+      href: "https://vakyam.ai/",
       badges: [],
       location: "Chennai, Tamil Nadu, India",
       title: "CEO & Co-Founder",
-      logoUrl: "/recruitrai.jpeg",
+      logoUrl: "/vakyamai.jpeg",
+      start: "July 2025",
+      end: "Present",
+      description:
+        "Vakyam AI is a multilingual voice AI platform that enables human-like conversations in Indian languages. We help businesses automate calls for customer support, lead generation, and training with natural, expressive regional voices. Unlike traditional IVRs or TTS systems, Vakyam understands context, speaks in local dialects, and integrates with real-time data — making it ideal for scale in diverse markets like India."
+    },
+    {
+      company: "Recruitr AI",
+      href: "https://recruitrai.com/",
+      badges: [],
+      location: "Chennai, Tamil Nadu, India",
+      title: "CEO & Co-Founder",
+      logoUrl: "/recruitrai.png",
       start: "January 2024",
       end: "Present",
       description:
-        "Recruitr AI is an AI-powered HR tech platform that streamlines the hiring process. It features an AI Interviewer Agent for conducting customizable video interviews, offering multilingual support, automated follow-up questions, and detailed candidate evaluations. The platform also includes a Talent Sourcing Bot to source candidates from various platforms based on job descriptions, along with features like proctoring, video recording, and ATS integration."
+        "Recruitr AI is an AI-powered hiring platform that streamlines candidate screening and interviews at scale. Built to improve how companies evaluate talent, it uses conversational AI to assess candidates efficiently and fairly. We worked with global customers and secured international funding, with a focus on making tech hiring faster, smarter, and more accessible."
       },
     {
       company: "FLSmidth",
@@ -107,7 +119,14 @@ export const DATA = {
     },
   ],
   education: [
-    
+    {
+      school: "The Residency",
+      href: "https://www.livetheresidency.com/",
+      degree: "Entrepreneurship",
+      logoUrl: "/live_the_residency_logo.jpeg",
+      start: "2024",
+      end: "2025",
+    },
     {
       school: "Vellore Institute of Technology, Chennai",
       href: "https://chennai.vit.ac.in/",
@@ -131,7 +150,7 @@ export const DATA = {
       logoUrl: "/buildspace.jpg",
       start: "2023",
       end: "2024",
-    },
+    }
   ],
   projects: [
     {
