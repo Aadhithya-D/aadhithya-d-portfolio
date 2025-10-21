@@ -9,7 +9,7 @@ export const DATA = {
   description:
     "Entrepreneur and Engineer. I love building things.",
   summary:
-  "Founder of [Vakyam AI](https://vakyam.ai), a voice AI platform enabling human-like, multilingual conversations for the Indian market. Previously, I founded [Recruitr AI](https://recruitrai.com), where we secured international funding and onboarded paying customers globally. Computer Science graduate from VIT Chennai. Backed by internship experience at Ford and FLSmidth, multiple hackathon wins, and a focus on solving real-world problems, I chose to forgo placements to build products that push the boundaries of what's possible with AI.",
+  "Building [Vakyam AI](https://vakyam.ai), a voice AI platform enabling human-like, multilingual conversations for the Indian market. Previously, I built [Recruitr AI](https://recruitrai.com), where we secured international funding and onboarded paying customers globally. Computer Science graduate from VIT Chennai. Backed by internship experience at Ford and FLSmidth, multiple hackathon wins, and a focus on solving real-world problems, I chose to startup straight out of college to build products that push the boundaries of what's possible with AI.",
   avatarUrl: "/me2.jpg",
   skills: {
     categories: {
