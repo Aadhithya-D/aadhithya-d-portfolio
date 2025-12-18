@@ -88,9 +88,9 @@ export function LeftSideMain() {
       </section>
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 2}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-sm text-foreground dark:prose-invert">
-            {DATA.summary}
-          </Markdown>
+          <div className="prose max-w-full text-pretty font-sans text-sm text-foreground dark:prose-invert">
+            <Markdown>{DATA.summary}</Markdown>
+          </div>
         </BlurFade>
       </section>
       <BlurFade delay={BLUR_FADE_DELAY * 3}>

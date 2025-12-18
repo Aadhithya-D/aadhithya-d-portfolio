@@ -18,12 +18,12 @@ export function ProjectRightSide({ markdown }: ProjectRightSideProps) {
   return (
     <div className="space-y-8 p-12 mx-auto">
       <BlurFade delay={BLUR_FADE_DELAY}>
-        <Markdown
-          className="prose prose-neutral dark:prose-dark 
+        <div className="prose prose-neutral dark:prose-dark 
         prose-headings:font-semibold
         prose-a:text-blue-600 hover:prose-a:text-blue-500
         prose-code:before:hidden prose-code:after:hidden
-        max-w-none"
+        max-w-none">
+        <Markdown
           components={{
             h1: ({ node, ...props }) => (
               <h1
@@ -146,6 +146,7 @@ export function ProjectRightSide({ markdown }: ProjectRightSideProps) {
         >
           {markdown}
         </Markdown>
+        </div>
       </BlurFade>
     </div>
   );
