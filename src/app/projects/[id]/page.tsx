@@ -5,8 +5,9 @@ import { ProjectRightSide } from "@/app/projects/[id]/components/project-right-s
 import GridPattern from "@/components/ui/grid-pattern";
 import { projects } from "@/data/projects";
 
-export default async function ProjectPage({ params }: { params: { id: string } }) {
-  const project = projects[params.id];
+export default async function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const project = projects[id];
   if (!project) {
     notFound();
   }
