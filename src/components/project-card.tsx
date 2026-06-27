@@ -11,7 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import Markdown from "react-markdown";
+import { ClientMarkdown } from "@/components/mdx/client-markdown";
 import { ArrowUpRight } from "lucide-react";
 
 interface Props {
@@ -88,9 +88,9 @@ export function ProjectCard({
           <div className="hidden font-sans text-xs underline print:visible">
             {link?.replace("https://", "").replace("www.", "").replace("/", "")}
           </div>
-          <div className="prose max-w-full text-pretty font-sans text-xs text-muted-foreground dark:prose-invert">
-            <Markdown>{description}</Markdown>
-          </div>
+          <ClientMarkdown className="text-pretty font-sans text-xs text-muted-foreground">
+            {description}
+          </ClientMarkdown>
         </div>
       </CardHeader>
       <CardContent className="mt-auto flex flex-col px-2">

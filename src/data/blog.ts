@@ -1,11 +1,6 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeStringify from "rehype-stringify";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import { unified } from "unified";
 
 type Metadata = {
   title: string;
@@ -14,55 +9,33 @@ type Metadata = {
   image?: string;
 };
 
+const contentDir = () => path.join(process.cwd(), "content");
+
 function getMDXFiles(dir: string) {
+  if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
 }
 
-export async function markdownToHTML(markdown: string) {
-  const p = await unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypePrettyCode, {
-      // https://rehype-pretty.pages.dev/#usage
-      theme: {
-        light: "min-light",
-        dark: "min-dark",
-      },
-      keepBackground: false,
-    })
-    .use(rehypeStringify)
-    .process(markdown);
-
-  return p.toString();
-}
-
+/** Raw MDX body + frontmatter for rendering with MDXRemote on the page. */
 export async function getPost(slug: string) {
-  const filePath = path.join("content", `${slug}.mdx`);
-  let source = fs.readFileSync(filePath, "utf-8");
+  const filePath = path.join(contentDir(), `${slug}.mdx`);
+  const source = fs.readFileSync(filePath, "utf-8");
   const { content: rawContent, data: metadata } = matter(source);
-  const content = await markdownToHTML(rawContent);
   return {
-    source: content,
-    metadata,
+    content: rawContent,
+    metadata: metadata as Metadata,
     slug,
   };
 }
 
-async function getAllPosts(dir: string) {
-  let mdxFiles = getMDXFiles(dir);
+export async function getBlogPosts() {
+  const dir = contentDir();
+  const mdxFiles = getMDXFiles(dir);
   return Promise.all(
     mdxFiles.map(async (file) => {
-      let slug = path.basename(file, path.extname(file));
-      let { metadata, source } = await getPost(slug);
-      return {
-        metadata,
-        slug,
-        source,
-      };
-    })
+      const slug = path.basename(file, path.extname(file));
+      const { metadata, content } = await getPost(slug);
+      return { metadata, slug, content };
+    }),
   );
-}
-
-export async function getBlogPosts() {
-  return getAllPosts(path.join(process.cwd(), "content"));
 }

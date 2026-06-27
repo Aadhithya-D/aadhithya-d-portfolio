@@ -2,7 +2,7 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
-import Markdown from "react-markdown";
+import { ClientMarkdown } from "@/components/mdx/client-markdown";
 import { Badge } from "@/components/ui/badge";
 import VerticalCutReveal from "../../components/fancy/vertical-cut-reveal";
 import ShineBorder from "../../components/ui/shine-border";
@@ -88,9 +88,9 @@ export function LeftSideMain() {
       </section>
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 2}>
-          <div className="prose max-w-full text-pretty font-sans text-sm text-foreground dark:prose-invert">
-            <Markdown>{DATA.summary}</Markdown>
-          </div>
+          <ClientMarkdown className="text-pretty font-sans text-sm text-foreground">
+            {DATA.summary}
+          </ClientMarkdown>
         </BlurFade>
       </section>
       <BlurFade delay={BLUR_FADE_DELAY * 3}>
