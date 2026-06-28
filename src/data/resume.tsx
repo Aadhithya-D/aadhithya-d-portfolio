@@ -36,7 +36,7 @@ export const DATA = {
         icon: Icons.linkedin,
       },
       X: {
-        url: "https://twitter.com/Aadhithya_D2003",
+        url: "https://x.com/AadhithyaD_",
         icon: Icons.x,
       },
       Youtube: {
