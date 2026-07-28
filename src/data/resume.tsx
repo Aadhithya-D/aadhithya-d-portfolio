@@ -57,7 +57,7 @@ export const DATA = {
       start: "July 2025",
       end: "Present",
       description:
-        "Vakyam AI is a multilingual voice AI platform that enables human-like conversations in Indian languages. We help businesses automate calls for customer support, lead generation, and training with natural, expressive regional voices. Unlike traditional IVRs or TTS systems, Vakyam understands context, speaks in local dialects, and integrates with real-time data — making it ideal for scale in diverse markets like India."
+        "Building foundation speech models for Indian languages. Incubated at IIT Madras.",
     },
     {
       company: "Recruitr AI",
@@ -67,10 +67,10 @@ export const DATA = {
       title: "CEO & Co-Founder",
       logoUrl: "/recruitrai.png",
       start: "January 2024",
-      end: "Present",
+      end: "July 2025",
       description:
-        "Recruitr AI is an AI-powered hiring platform that streamlines candidate screening and interviews at scale. Built to improve how companies evaluate talent, it uses conversational AI to assess candidates efficiently and fairly. We worked with global customers and secured international funding, with a focus on making tech hiring faster, smarter, and more accessible."
-      },
+        "Built Recruitr AI, an AI-based hiring platform, and onboarded 5 companies from the USA, Canada, and India. Did engineering, sales, marketing, and customer support. Built the platform entirely from scratch, including an AI video interviewer that screened over 500 candidates, as well as AI candidate sourcing tools.",
+    },
     {
       company: "FLSmidth",
       badges: [],
@@ -80,12 +80,8 @@ export const DATA = {
       logoUrl: "/flsmidth.jpg",
       start: "August 2023",
       end: "November 2023",
-      description: `• Automated wear and tear analysis report generation for mining mills, reducing the processing time by 90%.\n
-        • Led the development of an iOS mobile app with SwiftUI for 3D scanning of mining mills, utilizing LiDAR data and Photogrammetry, and integrating ObjectCapture for precision, seamlessly connected to the cloud.
-        • Engineered a desktop app with Flutter for streamlined cloud storage management and automated report generation.
-        • Initiated the integration of machine learning models to automate report generation, streamlining data analysis processes.
-        • Developed algorithms to achieve precise 3D object segmentation and thickness analysis, significantly enhancing the depth and accuracy of generated reports.
-        • Managed cloud deployments using Google Cloud Platform (GCP) tools, such as Cloud Storage and Compute Engine VM Instance.`,
+      description:
+        "Built tools for mining mill inspection and analysis, cutting wear-and-tear report generation time by 90%. Led an iOS app in SwiftUI for 3D scanning with LiDAR, photogrammetry, and ObjectCapture, paired with a Flutter desktop app for cloud storage and automated reporting. Integrated ML models and algorithms for 3D segmentation and thickness analysis, and managed deployments on GCP (Cloud Storage, Compute Engine).",
     },
     {
       company: "Ford Motor Company",
@@ -96,27 +92,21 @@ export const DATA = {
       logoUrl: "/ford_motor_company_logo.jpeg",
       start: "August 2023",
       end: "October 2023",
-      description: `• Collaborated effectively with the Android team, ensuring a smooth workflow.
-        • Elevated user experience and visual appeal through UI enhancements with Jetpack Compose in Kotlin.
-        • Applied deep linking within notifications to streamline user navigation.
-        • Implemented gRPC bidirectional streaming, seamlessly integrated with Google Pub/Sub and a Spring Boot BFF (Backend for Frontend), achieving a remarkable 7x boost in broadcasting speed while ensuring robust stability.
-        • Streamlined data engineering with multiple algorithms and facilitated ML model selection for driver-selective broadcasting.`,
+      description:
+        "Worked with the Android team on product UI and systems for driver-facing experiences. Shipped UI improvements in Jetpack Compose (Kotlin), added deep linking in notifications, and implemented gRPC bidirectional streaming with Google Pub/Sub and a Spring Boot BFF, improving broadcast speed by about 7x. Also supported data pipelines and ML model selection for driver-selective broadcasting.",
     },
-    {
-      company: "Bhai AR",
-      href: "https://www.bhai.tech/",
-      badges: [],
-      location: "Bengaluru, Karnataka, India",
-      title: "SDE Intern",
-      logoUrl: "/bhai_logo.jpeg",
-      start: "February 2023",
-      end: "March 2023",
-      description: `• Developed two Flutter and Firebase apps: a news aggregator for the North American market and a news submission app.\n
-        • Implemented a custom cache management system that improved media loading performance by 80%.
-        • Enhanced app functionality with deep linking, push notifications, and other features.
-        • Created AiBlocks, a mobile app that uses generative AI models to create images from user prompts.
-        • Images can be minted as NFTs, and the app is being used by 15 different NFT projects.`,
-    },
+    // {
+    //   company: "Bhai AR",
+    //   href: "https://www.bhai.tech/",
+    //   badges: [],
+    //   location: "Bengaluru, Karnataka, India",
+    //   title: "SDE Intern",
+    //   logoUrl: "/bhai_logo.jpeg",
+    //   start: "February 2023",
+    //   end: "March 2023",
+    //   description:
+    //     "Built two Flutter and Firebase apps (a news aggregator for the North American market and a news submission app), including a custom cache layer that improved media load performance by 80%, plus deep linking and push notifications. Also shipped AiBlocks, a generative AI image app used by 15 NFT projects, with support for minting images as NFTs.",
+    // },
   ],
   education: [
     {
@@ -138,7 +128,7 @@ export const DATA = {
     {
       school: "SKNS PMC Vivekananda Vidyalaya",
       href: "https://www.sknspmcvv.org/",
-      degree: "High School (PCM with Computer Science)",
+      degree: "High School (PCM with Computer Science) - 94.2%",
       logoUrl: "/vvjc-logo.png",
       start: "2007",
       end: "2021",
@@ -151,6 +141,51 @@ export const DATA = {
       start: "2023",
       end: "2024",
     }
+  ],
+  awards: [
+    {
+      title: "Mercatus EV Grantee",
+      org: "Mercatus Center",
+      year: "2025",
+      href: "https://www.mercatus.org/emergent-ventures",
+      description:
+        "Emergent Ventures grantee from Mercatus Center.",
+    },
+    {
+      title: "Cyber Spectrum",
+      org: "VIT",
+      year: "2023",
+      description:
+        "Runner-up at CyberSpectrum project expo for developing an Intelligent Bike Locking System.",
+    },
+    {
+      title: "Flipkart Grid 5.0 - Robotics & Software Tracks",
+      org: "Flipkart",
+      year: "2023",
+      description:
+        "Certificate of Merit in both the Robotics and Software Engineering tracks. Qualified to Round 2; one of the top 10 teams in college.",
+    },
+    {
+      title: "App Frenzy 2.0",
+      org: "Sai Ram College",
+      year: "2022",
+      description:
+        "3rd place in the annual app development competition for developing FITNUT, a fitness app.",
+    },
+    {
+      title: "HackHub 2022",
+      org: "IEEE Computer Society - VITC",
+      year: "2022",
+      description:
+        "Top 10 teams at HackHub 2022, IEEE Computer Society, VIT Chennai.",
+    },
+    {
+      title: "First Rank Holder in Computer Science",
+      org: "VVJC",
+      year: "2020",
+      description:
+        "First rank holder in Computer Science at SKNS PMC Vivekananda Vidyalaya (VVJC) with 94.2%.",
+    },
   ],
   projects: [
     {

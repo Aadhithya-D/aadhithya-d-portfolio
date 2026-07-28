@@ -1,131 +1,20 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
-import Link from "next/link";
 import BlurFade from "@/components/magicui/blur-fade";
-import { ProjectCard } from "@/components/project-card";
+// import { ProjectCard } from "@/components/project-card"; // used by commented-out Projects section
 import { ResumeCard } from "@/components/resume-card";
+import { SocialLinks } from "@/components/social-links";
 import { DATA } from "@/data/resume";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useEffect, useRef, useState } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
-const SECTIONS = [
-  "work",
-  "education",
-  "projects",
-  "hackathons",
-  "contact",
-] as const;
-type Section = (typeof SECTIONS)[number];
 
 export function RightSideMain() {
-  const [activeTab, setActiveTab] = useState<Section>("work");
-  const isScrollingRef = useRef(false);
-  const observersRef = useRef(new Map());
-
-  useEffect(() => {
-    const createObserver = (sectionId: Section) => {
-      const options = {
-        root: null,
-        rootMargin: sectionId === "contact" ? "-20% 0px" : "-50% 0px",
-        threshold: 0,
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !isScrollingRef.current) {
-            setActiveTab(sectionId);
-          }
-        });
-      }, options);
-
-      return observer;
-    };
-
-    const handleScroll = () => {
-      if (
-        !isScrollingRef.current &&
-        window.innerHeight + window.scrollY >=
-          document.documentElement.scrollHeight - 100
-      ) {
-        setActiveTab("contact");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    SECTIONS.forEach((sectionId) => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const observer = createObserver(sectionId);
-        observer.observe(element);
-        observersRef.current.set(sectionId, observer);
-      }
-    });
-
-    return () => {
-      observersRef.current.forEach((observer) => observer.disconnect());
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const handleScroll = (sectionId: Section) => {
-    setActiveTab(sectionId);
-
-    isScrollingRef.current = true;
-
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-      setTimeout(() => {
-        isScrollingRef.current = false;
-      }, 1000); // Using 1000ms to be safe
-    }
-  };
-
   return (
-    <div className="space-y-8 pb-8">
-      <div className="hidden sm:block z-10 sticky top-0 bg-background px-4 py-4 rounded-t-xl border-b-2">
-        <div className="">
-          <Tabs value={activeTab} className="">
-            <TabsList className="h-10 p-2">
-              <TabsTrigger value="work" onClick={() => handleScroll("work")}>
-                Work Experience
-              </TabsTrigger>
-              <TabsTrigger
-                value="education"
-                onClick={() => handleScroll("education")}
-              >
-                Education
-              </TabsTrigger>
-              <TabsTrigger
-                value="projects"
-                onClick={() => handleScroll("projects")}
-              >
-                Projects
-              </TabsTrigger>
-              {/* <TabsTrigger
-                value="hackathons"
-                onClick={() => handleScroll("hackathons")}
-              >
-                Hackathons
-              </TabsTrigger> */}
-              <TabsTrigger
-                value="contact"
-                onClick={() => handleScroll("contact")}
-              >
-                Contact
-              </TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </div>
-      </div>
-
-      <section id="work" className="scroll-m-24">
-        <div className="flex min-h-0 flex-col gap-y-3 pl-12 pr-12 pt-4 sm:pt-0">
-          <BlurFade delay={BLUR_FADE_DELAY * 2}>
-            <h2 className="text-xl font-bold">Work Experience</h2>
-          </BlurFade>
+    <div className="mt-10 space-y-10 sm:mt-12 sm:space-y-12">
+      <section id="work" className="space-y-4">
+        <BlurFade delay={BLUR_FADE_DELAY * 2}>
+          <h2 className="text-xl font-bold tracking-tight">Work Experience</h2>
+        </BlurFade>
+        <div className="flex flex-col gap-y-5">
           {DATA.work.map((work, id) => (
             <BlurFade
               key={work.company}
@@ -146,11 +35,12 @@ export function RightSideMain() {
           ))}
         </div>
       </section>
-      <section id="education" className="pl-12 pr-12 scroll-m-24">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <BlurFade delay={BLUR_FADE_DELAY * 3}>
-            <h2 className="text-xl font-bold">Education</h2>
-          </BlurFade>
+
+      <section id="education" className="space-y-4">
+        <BlurFade delay={BLUR_FADE_DELAY * 3}>
+          <h2 className="text-xl font-bold tracking-tight">Education</h2>
+        </BlurFade>
+        <div className="flex flex-col gap-y-5">
           {DATA.education.map((education, id) => (
             <BlurFade
               key={education.school}
@@ -169,113 +59,67 @@ export function RightSideMain() {
           ))}
         </div>
       </section>
-      <section id="projects" className="pl-12 pr-12 scroll-m-16">
-        <div className="space-y-12 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 4}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  My Projects
+
+      <section id="awards" className="space-y-4">
+        <BlurFade delay={BLUR_FADE_DELAY * 3.5}>
+          <h2 className="text-xl font-bold tracking-tight">
+            Awards and Achievements
+          </h2>
+        </BlurFade>
+        <div className="flex flex-col gap-y-5">
+          {DATA.awards.map((award, id) => (
+            <BlurFade
+              key={award.title}
+              delay={BLUR_FADE_DELAY * 3.5 + id * 0.05}
+            >
+              <div className="space-y-1">
+                <div className="flex items-start justify-between gap-x-3">
+                  <h3 className="text-sm font-semibold leading-snug">
+                    {"href" in award && award.href ? (
+                      <a
+                        href={award.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline underline-offset-4 hover:opacity-80"
+                      >
+                        {award.title}
+                      </a>
+                    ) : (
+                      award.title
+                    )}
+                  </h3>
+                  <div className="shrink-0 pt-0.5 text-right text-xs tabular-nums text-muted-foreground sm:text-sm">
+                    {award.year}
+                  </div>
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Check out my latest work
-                </h2>
-                <p className="text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  I&apos;ve worked on a variety of projects, from simple mobile
-                  apps to complex robots. Here are a few of my favorites.
-                </p>
+                {award.org && (
+                  <div className="text-xs text-foreground sm:text-sm">
+                    {award.org}
+                  </div>
+                )}
+                {award.description && (
+                  <p className="text-xs leading-relaxed text-foreground sm:text-sm">
+                    {award.description}
+                  </p>
+                )}
               </div>
-            </div>
-          </BlurFade>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto">
-            {DATA.projects.map((project, id) => (
-              <BlurFade
-                key={project.title}
-                delay={BLUR_FADE_DELAY * 4 + id * 0.05}
-              >
-                <ProjectCard
-                  href={project.href}
-                  key={project.title}
-                  title={project.title}
-                  description={project.description}
-                  dates={project.dates}
-                  tags={project.technologies}
-                  image={project.image}
-                  video={project.video}
-                  links={project.links}
-                />
-              </BlurFade>
-            ))}
+            </BlurFade>
+          ))}
+        </div>
+      </section>
+
+      {/* Projects section hidden on home - shared /projects/[id] URLs still work */}
+
+      <footer id="contact" className="border-t border-border/60 pt-8 pb-2">
+        <BlurFade delay={BLUR_FADE_DELAY * 4}>
+          <div className="flex flex-col items-center gap-4">
+            <SocialLinks className="justify-center" />
+            <p className="text-xs text-muted-foreground sm:text-sm">
+              © 2026 {DATA.name}
+            </p>
           </div>
-        </div>
-      </section>
-      {/* <section id="hackathons" className="pl-12 pr-12 scroll-m-16">
-        <div className="space-y-12 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                  Hackathons
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  I like building things
-                </h2>
-                <p className="text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  During my time in university, I attended{" "}
-                  {DATA.hackathons.length}+ hackathons. People from around the
-                  country would come together and build incredible things in 2-3
-                  days. It was eye-opening to see the endless possibilities
-                  brought to life by a group of motivated and passionate
-                  individuals.
-                </p>
-              </div>
-            </div>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 14}>
-            <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
-              {DATA.hackathons.map((project, id) => (
-                <BlurFade
-                  key={project.title + project.dates}
-                  delay={BLUR_FADE_DELAY * 15 + id * 0.05}
-                >
-                  <HackathonCard
-                    title={project.title}
-                    description={project.description}
-                    location={project.location}
-                    dates={project.dates}
-                    image={project.image}
-                    links={project.links}
-                  />
-                </BlurFade>
-              ))}
-            </ul>
-          </BlurFade>
-        </div>
-      </section> */}
-      <section id="contact" className="pl-12 pr-12">
-        <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
-          <BlurFade delay={BLUR_FADE_DELAY * 16}>
-            <div className="space-y-3">
-              <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                Contact
-              </div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                Get in Touch
-              </h2>
-              <p className="mx-auto max-w-[600px] text-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat? Just shoot me a dm{" "}
-                <Link
-                  href={DATA.contact.social.X.url}
-                  className="text-blue-500 hover:underline"
-                >
-                  with a direct question on twitter
-                </Link>{" "}
-                and I&apos;ll respond whenever I can.
-              </p>
-            </div>
-          </BlurFade>
-        </div>
-      </section>
+        </BlurFade>
+      </footer>
     </div>
   );
 }

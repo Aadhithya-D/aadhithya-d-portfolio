@@ -27,7 +27,7 @@ export const roboGPT = {
 # RoboGPT 🤖  
 **An AI-powered, voice-activated robotic arm with vision-based perception.**  
 
-🚀 *Patent Pending* – We have officially applied for a **patent** for RoboGPT, focusing on its **AI-driven object recognition and task execution capabilities**.  
+🚀 *Patent Pending* - We have officially applied for a **patent** for RoboGPT, focusing on its **AI-driven object recognition and task execution capabilities**.  
 
 ## Overview  
 RoboGPT is an intelligent **robotic arm** that can execute **natural language commands** while perceiving its surroundings using **YOLO-based vision models**. This system is designed to bridge the gap between **AI-powered task automation** and **robotic control** by integrating **voice commands, LLM-driven task planning, and real-time vision processing**.  
