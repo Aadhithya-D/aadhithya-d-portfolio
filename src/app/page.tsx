@@ -1,14 +1,5 @@
-"use client";
-import { LeftSideMain } from "@/app/components/main-left-side";
-import { RightSideMain } from "@/app/components/main-right-side";
+import { Home } from "@/app/components/home";
 
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-background">
-      <main className="mx-auto box-border w-full max-w-2xl px-6 py-10 sm:px-8 sm:py-16">
-        <LeftSideMain />
-        <RightSideMain />
-      </main>
-    </div>
-  );
+export default function Page() {
+  return <Home />;
 }
