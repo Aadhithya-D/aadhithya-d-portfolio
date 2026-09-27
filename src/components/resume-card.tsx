@@ -2,8 +2,7 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader } from "@/components/ui/card";
-import React, { useState } from "react";
+import { useState } from "react";
 import CenterUnderline from "./fancy/underline-center";
 
 interface ResumeCardProps {
@@ -16,6 +15,7 @@ interface ResumeCardProps {
   period: string;
   description?: string;
 }
+
 export const ResumeCard = ({
   logoUrl,
   altText,
@@ -26,42 +26,36 @@ export const ResumeCard = ({
   period,
   description,
 }: ResumeCardProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const MAX_LENGTH = 200; // characters to show initially
-  
-  const shouldTruncate = description && description.length > MAX_LENGTH;
-  const displayText = !shouldTruncate || isExpanded 
-    ? description 
-    : description?.slice(0, MAX_LENGTH).trimEnd() + "... ";
+  const [open, setOpen] = useState(false);
+
   return (
-    <Card className="flex gap-3 border-0 bg-transparent p-0 shadow-none sm:gap-4">
-      <div className="flex-none pt-0.5">
-        <Avatar className="size-11 border bg-muted sm:size-12">
-          <AvatarImage src={logoUrl} alt={altText} className="object-contain" />
-          <AvatarFallback>{altText[0]}</AvatarFallback>
+    <div
+      className="relative rounded-lg px-1 py-2.5 transition-colors hover:bg-black/[0.03]"
+      onMouseEnter={() => description && setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onClick={() => description && setOpen((value) => !value)}
+    >
+      <div className="flex gap-3 sm:gap-3.5">
+        <Avatar className="size-10 shrink-0 rounded-[8px] border border-black/5 bg-[#efe8da] sm:size-11">
+          <AvatarImage src={logoUrl} alt={altText} className="object-contain p-0.5" />
+          <AvatarFallback className="rounded-[8px]">{altText[0]}</AvatarFallback>
         </Avatar>
-      </div>
-      <div className="min-w-0 flex-1 group">
-        <CardHeader className="space-y-0 p-0">
-          <div className="flex items-start justify-between gap-x-3 text-base">
-            <h3 className="inline-flex min-w-0 flex-wrap items-center gap-x-1 font-semibold leading-snug text-sm">
+        <div className="min-w-0 flex-1">
+          <div className="flex items-start justify-between gap-x-3">
+            <h3 className="text-sm font-medium leading-snug">
               <a
                 href={href || "#"}
-                className="block cursor-pointer"
+                className="cursor-pointer"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(event) => event.stopPropagation()}
               >
                 <CenterUnderline label={title} />
               </a>
-
-              {badges && (
-                <span className="inline-flex gap-x-1">
-                  {badges.map((badge, index) => (
-                    <Badge
-                      variant="secondary"
-                      className="align-middle text-xs"
-                      key={index}
-                    >
+              {badges && badges.length > 0 && (
+                <span className="ml-1 inline-flex gap-x-1">
+                  {badges.map((badge) => (
+                    <Badge variant="secondary" className="text-xs" key={badge}>
                       {badge}
                     </Badge>
                   ))}
@@ -73,34 +67,18 @@ export const ResumeCard = ({
             </div>
           </div>
           {subtitle && (
-            <div className="pt-1 font-sans text-xs text-foreground sm:text-sm">
+            <div className="pt-0.5 text-xs text-muted-foreground sm:text-sm">
               {subtitle}
             </div>
           )}
-        </CardHeader>
-        {description && (
-          <div className="mt-2 text-xs leading-relaxed text-foreground sm:text-sm">
-            {displayText?.split(/\n/).map((line, index, array) =>
-              index === 0 ? (
-                <React.Fragment key={index}>{line}</React.Fragment>
-              ) : (
-                <React.Fragment key={index}>
-                  {line}
-                  {!line.endsWith("...") && index !== array.length - 1 && <br />}
-                </React.Fragment>
-              )
-            )}
-            {shouldTruncate && (
-              <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className={`text-xs text-muted-foreground underline underline-offset-2 cursor-pointer hover:text-foreground ${isExpanded ? "ml-1.5" : ""}`}
-              >
-                {isExpanded ? "See Less" : "See More"}
-              </button>
-            )}
-          </div>
-        )}
+        </div>
       </div>
-    </Card>
+
+      {description && open && (
+        <div className="absolute left-0 right-0 top-full z-20 mt-1.5 rounded-xl border border-[#ddd4c4] bg-[#faf6ee] px-3.5 py-3 shadow-[0_10px_28px_rgba(45,40,30,0.12)]">
+          <p className="text-[13px] leading-relaxed text-[#3a3732]">{description}</p>
+        </div>
+      )}
+    </div>
   );
 };

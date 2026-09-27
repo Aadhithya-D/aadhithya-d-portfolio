@@ -112,7 +112,7 @@ export const DATA = {
     {
       school: "The Residency",
       href: "https://www.livetheresidency.com/",
-      degree: "Entrepreneurship",
+      degree: "Hacker house",
       logoUrl: "/live_the_residency_logo.jpeg",
       start: "2024",
       end: "2025",
@@ -120,27 +120,11 @@ export const DATA = {
     {
       school: "Vellore Institute of Technology, Chennai",
       href: "https://chennai.vit.ac.in/",
-      degree: "Bachelor of Technology, Computer Science and Engineering with Specialization in Cyber Physical Systems",
+      degree: "Computer Science",
       logoUrl: "/vit-logo.png",
       start: "2021",
       end: "2025",
     },
-    {
-      school: "SKNS PMC Vivekananda Vidyalaya",
-      href: "https://www.sknspmcvv.org/",
-      degree: "High School (PCM with Computer Science) - 94.2%",
-      logoUrl: "/vvjc-logo.png",
-      start: "2007",
-      end: "2021",
-    },
-    {
-      school: "Buildspace",
-      href: "https://buildspace.so",
-      degree: "s5",
-      logoUrl: "/buildspace.jpg",
-      start: "2023",
-      end: "2024",
-    }
   ],
   awards: [
     {
@@ -150,41 +134,6 @@ export const DATA = {
       href: "https://www.mercatus.org/emergent-ventures",
       description:
         "Emergent Ventures grantee from Mercatus Center.",
-    },
-    {
-      title: "Cyber Spectrum",
-      org: "VIT",
-      year: "2023",
-      description:
-        "Runner-up at CyberSpectrum project expo for developing an Intelligent Bike Locking System.",
-    },
-    {
-      title: "Flipkart Grid 5.0 - Robotics & Software Tracks",
-      org: "Flipkart",
-      year: "2023",
-      description:
-        "Certificate of Merit in both the Robotics and Software Engineering tracks. Qualified to Round 2; one of the top 10 teams in college.",
-    },
-    {
-      title: "App Frenzy 2.0",
-      org: "Sai Ram College",
-      year: "2022",
-      description:
-        "3rd place in the annual app development competition for developing FITNUT, a fitness app.",
-    },
-    {
-      title: "HackHub 2022",
-      org: "IEEE Computer Society - VITC",
-      year: "2022",
-      description:
-        "Top 10 teams at HackHub 2022, IEEE Computer Society, VIT Chennai.",
-    },
-    {
-      title: "First Rank Holder in Computer Science",
-      org: "VVJC",
-      year: "2020",
-      description:
-        "First rank holder in Computer Science at SKNS PMC Vivekananda Vidyalaya (VVJC) with 94.2%.",
     },
   ],
   projects: [

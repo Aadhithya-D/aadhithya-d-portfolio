@@ -4,8 +4,8 @@ import { RightSideMain } from "@/app/components/main-right-side";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
-      <main className="mx-auto box-border w-full max-w-2xl px-6 py-10 sm:px-8 sm:py-16">
+    <div className="paper-page min-h-screen">
+      <main className="mx-auto box-border w-full max-w-xl px-6 py-14 sm:px-8 sm:py-20">
         <LeftSideMain />
         <RightSideMain />
       </main>
