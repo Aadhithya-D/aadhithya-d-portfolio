@@ -1,24 +1,14 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { DATA } from "@/data/resume";
 
 /* ------------------------------------------------------------------ */
 /* Content                                                             */
 /* ------------------------------------------------------------------ */
-
-// Name in a few of the languages Vakyam speaks.
-const NAMES = [
-  { text: "Aadhithya", lang: "English" },
-  { text: "ஆதித்யா", lang: "Tamil" },
-  { text: "आदित्य", lang: "Hindi" },
-  { text: "ఆదిత్య", lang: "Telugu" },
-  { text: "ಆದಿತ್ಯ", lang: "Kannada" },
-  { text: "ആദിത്യ", lang: "Malayalam" },
-];
 
 const BEFORE = [
   {
@@ -65,51 +55,6 @@ const ALONG = [
 /* ------------------------------------------------------------------ */
 /* Bits                                                                */
 /* ------------------------------------------------------------------ */
-
-function CyclingName() {
-  const [i, setI] = useState(0);
-  const reduce = useReducedMotion();
-
-  useEffect(() => {
-    if (reduce) return;
-    const t = setInterval(() => setI((n) => (n + 1) % NAMES.length), 2200);
-    return () => clearInterval(t);
-  }, [reduce]);
-
-  const n = NAMES[i];
-  return (
-    <span className="relative inline-flex items-baseline">
-      {/* Screen readers get the name once, not every tick */}
-      <span className="sr-only">Aadhithya</span>
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.span
-          key={n.text}
-          aria-hidden
-          initial={{ y: "0.35em", opacity: 0, filter: "blur(4px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          exit={{ y: "-0.35em", opacity: 0, filter: "blur(4px)" }}
-          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="inline-block text-accent-ink"
-        >
-          {n.text}
-        </motion.span>
-      </AnimatePresence>
-      <span aria-hidden>.</span>
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.span
-          key={n.lang}
-          aria-hidden
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="absolute left-full top-1 ml-1.5 whitespace-nowrap font-mono text-[10px] tracking-wider uppercase text-muted-foreground"
-        >
-          {n.lang}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  );
-}
 
 /** A die-cut sticker you can pick up and drop anywhere. */
 function Sticker({
@@ -206,7 +151,7 @@ export function Home() {
               Chennai, India
             </motion.p>
             <h1 className="font-serif text-[2.6rem] leading-[1.05] tracking-tight sm:text-5xl">
-              Hi, I&apos;m <CyclingName />
+              Hi, I&apos;m <span className="text-accent-ink">Aadhithya</span>.
             </h1>
             <motion.p
               initial={{ opacity: 0, y: 8 }}
