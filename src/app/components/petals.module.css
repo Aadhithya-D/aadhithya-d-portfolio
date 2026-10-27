@@ -1,0 +1,29 @@
+/* Petals come loose from the garland and fall the length of the page.
+   .drop moves the petal down the page; .petal drifts, sways and spins on the way. */
+.drop {
+  animation-name: drop;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes drop {
+  from { top: var(--y0); }
+  to { top: var(--y1, 100%); }
+}
+
+.petal {
+  opacity: 0;
+  animation-name: sway;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes sway {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+  2% { opacity: 0.85; }
+  15% { transform: translate3d(calc(var(--dx) * 0.15 + 2vw), 0, 0) rotate(calc(var(--spin) * 0.15)); }
+  30% { transform: translate3d(calc(var(--dx) * 0.3 - 2vw), 0, 0) rotate(calc(var(--spin) * 0.3)); }
+  45% { transform: translate3d(calc(var(--dx) * 0.45 + 2vw), 0, 0) rotate(calc(var(--spin) * 0.45)); }
+  60% { transform: translate3d(calc(var(--dx) * 0.6 - 2vw), 0, 0) rotate(calc(var(--spin) * 0.6)); }
+  75% { transform: translate3d(calc(var(--dx) * 0.75 + 2vw), 0, 0) rotate(calc(var(--spin) * 0.75)); }
+  92% { opacity: 0.7; }
+  100% { transform: translate3d(var(--dx), 0, 0) rotate(var(--spin)); opacity: 0; }
+}
