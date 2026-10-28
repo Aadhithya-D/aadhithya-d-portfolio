@@ -19,19 +19,46 @@ const WHO = [
 // Hidden for now; flip to bring the moments list back.
 const SHOW_MOMENTS = true;
 
-// Moments I felt most alive. **bold** marks the bit that matters.
+// Highlights. **bold** marks the bit that matters; [text](url) is a link.
 const MOMENTS = [
-  "Took apart an RC car I got as a gift and turned its parts into a **motorboat** as a kid.",
-  "Spent a whole summer flashing custom ROMs onto my old tablet just to get **Google Assistant** on it (voice AI obsession began here).",
-  "Was the **first rank holder in Computer Science** in high school.",
-  "Co-founded **Recruitr AI**, scaled it to customers across the **US, Canada and India**, and screened **500+ candidates**. Along the way, became an **Emergent Ventures fellow** and spent **four months at The Residency**.",
-  "Got **Vakyam AI** incubated at the **IIT Madras Incubation Cell** with a **seed grant**, and launched **Raaga V1**, our own TTS model for Indian languages, in **July 2026**.",
+  "Took apart an RC car I got as a gift and turned its parts into a **motorboat** at 9.",
+  "At 13, spent a whole summer flashing custom ROMs onto my old tablet just to get **Google Assistant** on it (voice AI obsession began here).",
+  "At 18, won my **first hackathon**, and at 19 did **three internships in the same year**.",
+  "At 20, co-founded [Recruitr AI](https://www.recruitrai.com/), scaled it to customers across the **US, Canada and India**, and screened **500+ candidates**. Along the way, became an [Emergent Ventures](https://www.mercatus.org/emergent-ventures) fellow and spent **four months at** [The Residency](https://www.livetheresidency.com/).",
+  "At 21, got **Vakyam AI** incubated at the [IIT Madras Incubation Cell](https://incubation.iitm.ac.in/) with a **seed grant**, and at 22 launched [Raaga V1](https://x.com/AadhithyaD_/status/2072176392142504445), our own TTS model for Indian languages.",
 ];
 
-/** Turns **this** into bold text. */
+/** Turns **this** into bold text and [this](url) into an underlined link. */
 function withBold(text: string) {
-  return text.split("**").map((part, i) => (i % 2 ? <b key={i}>{part}</b> : part));
+  return text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/).map((part, i) => {
+    if (part.startsWith("**")) return <b key={i}>{part.slice(2, -2)}</b>;
+    const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (link)
+      return (
+        <a key={i} href={link[2]} target="_blank" rel="noopener noreferrer" className="squiggle font-medium text-foreground">
+          {link[1]}
+        </a>
+      );
+    return part;
+  });
 }
+
+const NOW = {
+  name: "Vakyam AI",
+  role: "Co-founder & CEO",
+  note: "Natural, expressive and affordable TTS models for 8 Indian languages",
+  logo: "/vakyamai.jpeg",
+  href: "https://vakyam.ai/",
+  when: "2025–",
+  dates: "Jul 2025 – now",
+  details: [
+    "Incubated at the IIT Madras Incubation Cell, with a seed grant.",
+    "Our [Raaga V1 launch](https://x.com/AadhithyaD_/status/2072176392142504445) got **400k+ views**.",
+    "Built **Akshar**, our own custom data collection pipeline.",
+    "Did a lot of inference engineering to make the model really efficient, with **under 150 ms** latency.",
+    "Priced at **₹0.75 per 1,000 characters**, one of the most affordable TTS models on the market.",
+  ],
+};
 
 const BEFORE = [
   {
@@ -260,8 +287,8 @@ function WorkRow({ work: w }: { work: Work }) {
             <div className="pb-4 pl-[3.75rem] pr-3">
               <ul className="space-y-2 text-sm leading-relaxed text-foreground/80">
                 {w.details.map((d) => (
-                  <li key={d} className="relative pl-4 before:absolute before:left-0 before:top-[0.65em] before:size-1 before:rounded-full before:bg-accent-ink/70">
-                    {d}
+                  <li key={d} className="relative pl-4 before:absolute before:left-0 before:top-[0.65em] before:size-1 before:rounded-full before:bg-accent-ink/70 [&_b]:font-medium [&_b]:text-foreground">
+                    {withBold(d)}
                   </li>
                 ))}
               </ul>
@@ -340,7 +367,7 @@ export function Home() {
               Chennai, India
             </motion.p>
             <h1 className="font-serif text-[2.6rem] leading-[1.05] tracking-tight sm:text-5xl">
-              Hi, I&apos;m <span className="text-accent-ink">Aadhithya</span>.
+              Hi, I&apos;m <span className="text-accent-ink">Aadhithya D</span>.
             </h1>
             <motion.p
               initial={{ opacity: 0, y: 8 }}
@@ -360,6 +387,26 @@ export function Home() {
 : natural, expressive and affordable TTS for Indian
               languages.
             </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...fadeUp.transition, delay: 0.25 }}
+              className="mt-5 flex items-center gap-4"
+            >
+              {Object.entries(socials).map(([name, { url, icon: Icon }]) => (
+                <a
+                  key={name}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  title={name}
+                  className="text-muted-foreground transition-colors hover:text-accent-ink"
+                >
+                  <Icon className="size-[18px]" />
+                </a>
+              ))}
+            </motion.div>
           </div>
           <Sticker
             src="/stickers/me.webp"
@@ -387,7 +434,7 @@ export function Home() {
           <>
             {/* Moments */}
             <motion.section {...fadeUp} className="mt-8">
-              <Label>Moments I felt most alive</Label>
+              <Label>How I got here</Label>
               <ul className="space-y-3">
                 {MOMENTS.map((line) => (
                   <li
@@ -407,31 +454,9 @@ export function Home() {
         {/* Now */}
         <motion.section {...fadeUp}>
           <Label>Now</Label>
-          <a
-            href="https://vakyam.ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group -mx-3 flex items-center gap-4 rounded-xl px-3 py-3 transition-colors hover:bg-muted"
-          >
-            <Image
-              src="/vakyamai.jpeg"
-              alt=""
-              width={40}
-              height={40}
-              className="size-10 rounded-full border object-cover"
-            />
-            <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-2 font-medium">
-                Vakyam AI
-              </div>
-              <div className="text-sm text-muted-foreground">
-                Co-founder & CEO · Incubated at IIT Madras
-              </div>
-            </div>
-            <span className="text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-              ↗
-            </span>
-          </a>
+          <ul>
+            <WorkRow work={NOW} />
+          </ul>
         </motion.section>
 
         {/* Before */}
