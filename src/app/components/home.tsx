@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { DATA } from "@/data/resume";
 import { Crow } from "./crow";
-import { KineticText, TypeLab } from "./type-lab";
+import { KineticText } from "./kinetic-text";
 import { Blossoms, Marina } from "./scenery";
 
 /* ------------------------------------------------------------------ */
@@ -13,8 +13,9 @@ import { Blossoms, Marina } from "./scenery";
 /* ------------------------------------------------------------------ */
 
 const WHO = [
-  "I like tech and building cool things that actually make an impact.",
-  "Right now I'm working on Vakyam AI. Outside of that, I love cinema and books, and I even made a short film a long time back.",
+  "I like tech, and I like building things that actually make an impact.",
+  "Right now I'm working on Vakyam AI. Before that, I co-founded Recruitr AI.",
+  "Outside of work, I love cinema and books. I made a short film once too.",
 ];
 
 // Hidden for now; flip to bring the moments list back.
@@ -22,11 +23,12 @@ const SHOW_MOMENTS = true;
 
 // Highlights. **bold** marks the bit that matters; [text](url) is a link.
 const MOMENTS = [
-  "Took apart an RC car I got as a gift and turned its parts into a **motorboat** at 9.",
-  "At 13, spent a whole summer flashing custom ROMs onto my old tablet just to get **Google Assistant** on it (voice AI obsession began here).",
-  "At 18, won my **first hackathon**, and at 19 did **three internships in the same year**.",
-  "At 20, co-founded [Recruitr AI](https://www.recruitrai.com/), scaled it to customers across the **US, Canada and India**, and screened **500+ candidates**. Along the way, became an [Emergent Ventures](https://www.mercatus.org/emergent-ventures) fellow and spent **four months at** [The Residency](https://www.livetheresidency.com/).",
-  "At 21, got **Vakyam AI** incubated at the [IIT Madras Incubation Cell](https://incubation.iitm.ac.in/) with a **seed grant**, and at 22 launched [Raaga V1](https://x.com/AadhithyaD_/status/2072176392142504445), our own TTS model for Indian languages.",
+  "At 13, I spent a whole summer flashing custom ROMs onto my old tablet, just to get **Google Assistant** on it. That's where the voice AI obsession started.",
+  "At 19, I led an iPhone app at FLSmidth that scans mining mills in 3D. Report time dropped by **90%**, and the work became an **international patent filing**.",
+  "At 20, I co-founded [Recruitr AI](https://www.recruitrai.com/). Our first paying customer, a US company, signed **2 days after launch**. After that came customers across the US, Canada and India.",
+  "Along the way, I became an [Emergent Ventures](https://www.mercatus.org/emergent-ventures) fellow and spent four months at [The Residency](https://www.livetheresidency.com/).",
+  "At 21, I got **Vakyam AI** into the [IIT Madras Incubation Cell](https://incubation.iitm.ac.in/) with a **seed grant**.",
+  "At 22, we launched [Raaga V1](https://x.com/AadhithyaD_/status/2072176392142504445), our own TTS model for Indian languages. The launch got **400k+ views**.",
 ];
 
 /** Turns **this** into bold text and [this](url) into an underlined link. */
@@ -47,17 +49,17 @@ function withBold(text: string) {
 const NOW = {
   name: "Vakyam AI",
   role: "Co-founder & CEO",
-  note: "Natural, expressive and affordable TTS models for 8 Indian languages",
+  note: "Our own TTS models for 8 Indian languages. Under 150 ms latency, ₹0.75 per 1,000 characters",
   logo: "/vakyamai.jpeg",
   href: "https://vakyam.ai/",
   when: "2025–",
   dates: "Jul 2025 – now",
   details: [
+    "We built Raaga V1, our own TTS model. The [launch](https://x.com/AadhithyaD_/status/2072176392142504445) got **400k+ views**.",
+    "Latency is **under 150 ms**. That took a lot of inference engineering.",
+    "It costs **₹0.75 per 1,000 characters**.",
+    "The data comes from **Akshar**, a collection pipeline we built ourselves.",
     "Incubated at the IIT Madras Incubation Cell, with a seed grant.",
-    "Our [Raaga V1 launch](https://x.com/AadhithyaD_/status/2072176392142504445) got **400k+ views**.",
-    "Built **Akshar**, our own custom data collection pipeline.",
-    "Did a lot of inference engineering to make the model really efficient, with **under 150 ms** latency.",
-    "Priced at **₹0.75 per 1,000 characters**, one of the most affordable TTS models on the market.",
   ],
 };
 
@@ -65,22 +67,23 @@ const BEFORE = [
   {
     name: "Recruitr AI",
     role: "Co-founder & CEO",
-    note: "An AI hiring platform built around an AI video interviewer, with customers across the US, Canada and India",
+    note: "An AI video interviewer for hiring. Our first paying customer signed 2 days after launch",
     logo: "/recruitrai.png",
     href: "https://recruitrai.com/",
     when: "2024–25",
     dates: "Jan 2024 – Jul 2025",
     details: [
-      "Built an AI hiring platform from scratch with Steve Aldrin: an AI video interviewer, plus tools to find the right candidates.",
-      "Our first paying customer, a US company, signed 2 days after launch. We got customers across the US, Canada and India.",
+      "Our first paying customer, a US company, signed **2 days after launch**. Then we got customers across the US, Canada and India.",
+      "Built the whole thing from scratch with Steve Aldrin: an AI video interviewer, plus tools to find the right candidates.",
       "The AI interviewer screened 500+ candidates.",
-      "Did whatever the company needed that week: engineering, sales, marketing, support. Backed by Emergent Ventures.",
+      "Backed by **Emergent Ventures**.",
+      "I did whatever the company needed that week: engineering, sales, marketing, support.",
     ],
   },
   {
     name: "FLSmidth",
     role: "R&D intern",
-    note: "Built an iPhone app for 3D reconstruction of mining mills and automated wear-and-tear analysis report generation",
+    note: "Led an iPhone app that scans mining mills in 3D. Report time dropped by 90%, and it became an international patent filing",
     logo: "/flsmidth.jpg",
     href: "https://www.flsmidth.com/",
     when: "2023",
@@ -89,7 +92,7 @@ const BEFORE = [
       "FLSmidth builds equipment for the mining industry. Checking how worn a mill is used to mean slow, manual reports.",
       "Led an iPhone app (SwiftUI) that scans a mill in 3D with LiDAR and photogrammetry, and a desktop app (Flutter) that turns those scans into reports on its own.",
       "ML models measure the wear straight from the 3D scan, all running on Google Cloud.",
-      "Report time dropped by 90%, and the work became an international patent filing.",
+      "Report time dropped by **90%**, and the work became an **international patent filing**.",
     ],
   },
   {
@@ -110,7 +113,7 @@ const BEFORE = [
   {
     name: "Bhai AR",
     role: "SDE intern",
-    note: "Built two Flutter news apps, and shipped AiBlocks, an AI image app used by 15 NFT projects",
+    note: "Built two Flutter news apps and shipped AiBlocks, an AI image generator",
     logo: "/bhai_logo.jpeg",
     href: "https://www.bhai.tech/",
     when: "2023",
@@ -388,8 +391,7 @@ export function Home() {
               >
                 Vakyam AI
               </a>
-: natural, expressive and affordable TTS for Indian
-              languages.
+              : natural, expressive and affordable TTS for Indian languages.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 8 }}
@@ -572,7 +574,7 @@ export function Home() {
         <motion.footer {...fadeUp} className="space-y-5">
           <p className="t-display t-sign leading-tight sm:whitespace-nowrap">
             Building something with voice?{" "}
-            <a href={`mailto:${DATA.contact.email}`} className="squiggle t-sign-link text-accent-ink">
+            <a href={`mailto:${DATA.contact.email}`} className="squiggle text-accent-ink">
               Say vanakkam.
             </a>
           </p>
@@ -618,7 +620,6 @@ export function Home() {
         </motion.footer>
       </main>
       <Marina scene="terrace" className="absolute inset-x-0 bottom-0" />
-      <TypeLab />
     </div>
   );
 }

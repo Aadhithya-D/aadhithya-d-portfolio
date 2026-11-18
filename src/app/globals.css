@@ -150,8 +150,7 @@ body {
 
 /* ------------------------------------------------------------------ */
 /* Allo (SIL OFL 1.1, Josh Puckett) — public/fonts/allo/OFL.txt        */
-/* Variable upright: wght 100–900, ROND 0–100, opsz 9–32.              */
-/* Obliques are static (roundness fixed at 50).                        */
+/* Variable: wght 100–900, ROND (roundness) 0–100, opsz 9–32.          */
 /* ------------------------------------------------------------------ */
 @font-face {
   font-family: "Allo";
@@ -160,114 +159,69 @@ body {
   font-style: normal;
   font-display: swap;
 }
-@font-face { font-family: "Allo"; src: url("/fonts/allo/Allo-Oblique.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: "Allo"; src: url("/fonts/allo/Allo-MediumOblique.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
-@font-face { font-family: "Allo"; src: url("/fonts/allo/Allo-SemiBoldOblique.woff2") format("woff2"); font-weight: 600; font-style: italic; font-display: swap; }
-@font-face { font-family: "Allo"; src: url("/fonts/allo/Allo-BoldOblique.woff2") format("woff2"); font-weight: 700; font-style: italic; font-display: swap; }
-@font-face { font-family: "Allo"; src: url("/fonts/allo/Allo-ExtraBoldOblique.woff2") format("woff2"); font-weight: 800; font-style: italic; font-display: swap; }
 
-/* ------------------------------------------------------------------ */
-/* Type roles. Every role reads variables, presets just set them.      */
-/*   display: the hero name and the sign-off                           */
-/*   body:    everything else                                          */
-/*   label:   the small uppercase section labels                       */
-/*   meta:    years, dates, footnotes                                  */
-/* ------------------------------------------------------------------ */
 :root {
   --allo: "Allo", var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --inter: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --serif: var(--font-serif), ui-serif, Georgia, serif;
-  --mono: var(--font-mono), ui-monospace, monospace;
-
-  /* "classic" = the site as it was */
-  --display-family: var(--serif);
-  --display-wght: 400;
-  --display-rond: 50;
-  --display-track: -0.025em;
-  --display-scale: 1;
-  --display-feat: normal;
-  --body-family: var(--inter);
-  --body-rond: 50;
-  --body-feat: normal;
-  --label-family: var(--mono);
-  --label-wght: 400;
-  --label-size: 11px;
-  --label-track: 0.14em;
-  --meta-family: var(--mono);
-  --sign-wght: 400;
-  --sign-size: 1.875rem;
-  --sign-style: italic;
 }
 
+/* Body: fairly round, open 4 6 9. The higher optical size uses Allo's own
+   tighter spacing (letter-spacing would switch its ligatures off), and it
+   stops the small labels from opening up below 14px. */
 body {
-  font-family: var(--body-family);
-  font-variation-settings: "ROND" var(--body-rond);
-  font-feature-settings: var(--body-feat);
+  font-family: var(--allo);
+  font-variation-settings: "ROND" 70, "opsz" 18;
+  font-feature-settings: "ss03";
+}
+.leading-relaxed {
+  line-height: 1.55;
+}
+main :is(p, li) {
+  text-wrap: pretty; /* no lonely last word */
 }
 
+/* Display: the hero name and the sign-off. Light and fully round. */
 .t-display {
-  font-family: var(--display-family);
-  font-weight: var(--display-wght);
-  font-variation-settings: "ROND" var(--display-rond);
-  font-feature-settings: var(--display-feat);
-  letter-spacing: var(--display-track);
+  font-family: var(--allo);
+  font-weight: 320; /* keep in sync with BASE_WGHT in kinetic-text.tsx */
+  font-variation-settings: "ROND" 100;
+  letter-spacing: -0.025em;
 }
 .t-display-size {
-  font-size: calc(2.6rem * var(--display-scale));
+  font-size: 2.47rem;
 }
 @media (min-width: 640px) {
-  .t-display-size { font-size: calc(3rem * var(--display-scale)); }
+  .t-display-size { font-size: 2.85rem; }
+}
+.t-sign {
+  font-size: 1.625rem;
+  letter-spacing: -0.01em;
 }
 
+/* Small uppercase section labels */
 .t-label {
-  font-family: var(--label-family);
-  font-weight: var(--label-wght);
-  font-size: var(--label-size);
-  letter-spacing: var(--label-track);
+  font-weight: 600;
+  font-size: 11.5px;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
 }
+/* Years, dates, footnotes */
 .t-meta {
-  font-family: var(--meta-family);
   font-variant-numeric: tabular-nums;
 }
 
-/* Kinetic name: each letter's weight follows the cursor (see home.tsx) */
+/* Kinetic name: each letter's weight follows the cursor (kinetic-text.tsx) */
 .kinetic-letter {
   display: inline-block;
-  transition: font-weight 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    font-variation-settings 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: font-weight 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 @media (prefers-reduced-motion: reduce) {
   .kinetic-letter { transition: none; }
 }
 
-/* Sign-off line: lighter than the hero when the name is heavy */
-.t-sign {
-  font-size: var(--sign-size);
-  font-weight: var(--sign-wght);
-  letter-spacing: -0.01em;
-}
-.t-sign-link {
-  font-style: var(--sign-style);
-}
-
-/* With Allo body: a touch tighter. A higher optical size uses Allo's own
-   tighter spacing (letter-spacing would switch its ligatures off), and it
-   stops the small labels from opening up below 14px. */
-html[data-allo-body="on"] body {
-  font-variation-settings: "ROND" var(--body-rond), "opsz" 18;
-}
-html[data-allo-body="on"] .leading-relaxed {
-  line-height: 1.55;
-}
-html[data-allo-body="on"] main :is(p, li) {
-  text-wrap: pretty; /* no lonely last word, e.g. "9." */
-}
-
-/* With Allo body: links get a little rounder on hover */
-html[data-allo-body="on"] .squiggle {
+/* Links get a little rounder on hover */
+.squiggle {
   transition: background-position 0.6s ease, font-variation-settings 0.2s ease;
 }
-html[data-allo-body="on"] .squiggle:hover {
+.squiggle:hover {
   font-variation-settings: "ROND" 100, "opsz" 18;
 }
