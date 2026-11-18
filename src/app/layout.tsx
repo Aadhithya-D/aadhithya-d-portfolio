@@ -68,13 +68,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="scrollbar-gutter-stable">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn("scrollbar-gutter-stable", fontSans.variable, fontSerif.variable, fontMono.variable)}
+    >
+      <head>
+        <link rel="preload" href="/fonts/allo/AlloVariable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+      </head>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased text-foreground",
-          fontSans.variable,
-          fontSerif.variable,
-          fontMono.variable
+          "min-h-screen bg-background font-sans antialiased text-foreground"
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>

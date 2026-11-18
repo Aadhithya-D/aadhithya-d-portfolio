@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { DATA } from "@/data/resume";
 import { Crow } from "./crow";
+import { KineticText, TypeLab } from "./type-lab";
 import { Blossoms, Marina } from "./scenery";
 
 /* ------------------------------------------------------------------ */
@@ -259,7 +260,7 @@ function WorkRow({ work: w }: { work: Work }) {
           </div>
           <div className={`text-sm text-muted-foreground ${open ? "" : "line-clamp-2"}`}>{w.note}</div>
         </div>
-        <span className="shrink-0 font-mono text-xs tabular-nums text-muted-foreground">{w.when}</span>
+        <span className="t-meta shrink-0 text-xs text-muted-foreground">{w.when}</span>
         <button
           type="button"
           onClick={(e) => {
@@ -292,7 +293,7 @@ function WorkRow({ work: w }: { work: Work }) {
                   </li>
                 ))}
               </ul>
-              <div className="mt-3 flex gap-4 font-mono text-[11px] text-muted-foreground">
+              <div className="t-meta mt-3 flex gap-4 text-[11px] text-muted-foreground">
                 <span>{w.dates}</span>
                 <a
                   href={w.href}
@@ -313,7 +314,7 @@ function WorkRow({ work: w }: { work: Work }) {
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="mb-4 font-mono text-[11px] tracking-[0.14em] uppercase text-muted-foreground">
+    <h2 className="t-label mb-4 text-muted-foreground">
       {children}
     </h2>
   );
@@ -362,12 +363,15 @@ export function Home() {
             <motion.p
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-6 font-mono text-[11px] tracking-[0.14em] uppercase text-muted-foreground"
+              className="t-label mb-6 text-muted-foreground"
             >
               Chennai, India
             </motion.p>
-            <h1 className="font-serif text-[2.6rem] leading-[1.05] tracking-tight sm:text-5xl">
-              Hi, I&apos;m <span className="text-accent-ink">Aadhithya D</span>.
+            <h1 className="t-display t-display-size leading-[1.05] sm:whitespace-nowrap">
+              Hi, I&apos;m{" "}
+              <span className="whitespace-nowrap">
+                <KineticText text="Aadhithya D" className="text-accent-ink" />.
+              </span>
             </h1>
             <motion.p
               initial={{ opacity: 0, y: 8 }}
@@ -511,7 +515,7 @@ export function Home() {
                     {a.name}
                   </span>
                   <span className="mx-3 mb-[0.3em] flex-1 border-b border-dotted border-foreground/25" />
-                  <span className="shrink-0 font-mono text-xs text-muted-foreground">{a.note}</span>
+                  <span className="t-meta shrink-0 text-xs text-muted-foreground">{a.note}</span>
                 </>
               );
               const cls = "group flex items-end py-1.5";
@@ -566,9 +570,9 @@ export function Home() {
 
         {/* Say hi */}
         <motion.footer {...fadeUp} className="space-y-5">
-          <p className="font-serif text-3xl leading-tight">
+          <p className="t-display t-sign leading-tight sm:whitespace-nowrap">
             Building something with voice?{" "}
-            <a href={`mailto:${DATA.contact.email}`} className="squiggle italic text-accent-ink">
+            <a href={`mailto:${DATA.contact.email}`} className="squiggle t-sign-link text-accent-ink">
               Say vanakkam.
             </a>
           </p>
@@ -594,7 +598,7 @@ export function Home() {
               </a>
             ))}
           </div>
-          <p className="pt-6 font-mono text-[11px] text-muted-foreground/70">
+          <p className="t-meta pt-6 text-[11px] text-muted-foreground/70">
             © {new Date().getFullYear()} {DATA.name}
             <span className="hidden xl:inline"> · psst, the stickers move</span>
             <span className="hidden lg:inline">
@@ -614,6 +618,7 @@ export function Home() {
         </motion.footer>
       </main>
       <Marina scene="terrace" className="absolute inset-x-0 bottom-0" />
+      <TypeLab />
     </div>
   );
 }
