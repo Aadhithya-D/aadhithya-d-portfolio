@@ -5,7 +5,7 @@
 export const WHO = [
   "I like tech, and I like building things that actually make an impact.",
   "Right now I'm working on Vakyam AI. Before that, I co-founded Recruitr AI.",
-  "Outside of work, I love cinema, and I made a short film once. I'm also getting back into reading.",
+  "Outside of work, I love cinema, and I made a short film once.",
 ];
 
 export const MOMENTS = [
