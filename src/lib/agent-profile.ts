@@ -27,7 +27,6 @@ export function agentProfile() {
     "",
     `Website: ${SITE}`,
     `Location: Chennai, Tamil Nadu, India`,
-    `Email: ${DATA.contact.email}`,
     "",
     "## Who I am",
     "",
@@ -61,7 +60,6 @@ export function agentProfile() {
     "## Links",
     "",
     ...socials,
-    `- Email: ${DATA.contact.email}`,
     "",
   ].join("\n");
 }
