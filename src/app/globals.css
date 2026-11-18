@@ -225,3 +225,29 @@ main :is(p, li) {
 .squiggle:hover {
   font-variation-settings: "ROND" 100, "opsz" 18;
 }
+
+/* First-visit kolam intro (kolam-intro.tsx) */
+html:not([data-intro="show"]) [data-intro-overlay] {
+  display: none;
+}
+.kolam-dot {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: kolam-dot 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes kolam-dot {
+  from { opacity: 0; transform: scale(0.2); }
+  to { opacity: 1; transform: scale(1); }
+}
+.kolam-line {
+  /* --len is the path's measured length, set in kolam-intro.tsx. Using it
+     instead of pathLength=1, which some browsers estimate short, leaving
+     the closing bit of the loop undrawn. */
+  stroke-dasharray: var(--len, 9999);
+  stroke-dashoffset: var(--len, 9999);
+  animation: kolam-line 1.5s cubic-bezier(0.45, 0, 0.25, 1) forwards;
+}
+@keyframes kolam-line {
+  to { stroke-dashoffset: 0; }
+}

@@ -2,6 +2,7 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
+import { personJsonLd } from "@/lib/agent-profile";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
@@ -33,6 +34,7 @@ export const metadata: Metadata = {
     template: `%s | ${DATA.name}`,
   },
   description: DATA.description,
+  alternates: { canonical: "/" },
   openGraph: {
     title: `${DATA.name}`,
     description: DATA.description,
@@ -75,6 +77,12 @@ export default function RootLayout({
     >
       <head>
         <link rel="preload" href="/fonts/allo/AlloVariable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* For AI agents: a plain-text version of the whole page, and who this is as structured data. */}
+        <link rel="alternate" type="text/markdown" href="/llms.txt" title="Aadhithya D, as plain text" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()) }}
+        />
       </head>
       <body
         className={cn(

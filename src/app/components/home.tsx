@@ -1,35 +1,21 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { DATA } from "@/data/resume";
+import { ALONG, BEFORE, BUILT, INTERNSHIPS, MOMENTS, NOW, READS, WHO } from "@/data/home-content";
 import { Crow } from "./crow";
 import { KineticText } from "./kinetic-text";
+import { KolamIntro } from "./kolam-intro";
 import { Blossoms, Marina } from "./scenery";
 
 /* ------------------------------------------------------------------ */
 /* Content                                                             */
 /* ------------------------------------------------------------------ */
 
-const WHO = [
-  "I like tech, and I like building things that actually make an impact.",
-  "Right now I'm working on Vakyam AI. Before that, I co-founded Recruitr AI.",
-  "Outside of work, I love cinema and books. I made a short film once too.",
-];
-
 // Hidden for now; flip to bring the moments list back.
 const SHOW_MOMENTS = true;
-
-// Highlights. **bold** marks the bit that matters; [text](url) is a link.
-const MOMENTS = [
-  "At 13, I spent a whole summer flashing custom ROMs onto my old tablet, just to get **Google Assistant** on it. That's where the voice AI obsession started.",
-  "At 19, I led an iPhone app at FLSmidth that scans mining mills in 3D. Report time dropped by **90%**, and the work became an **international patent filing**.",
-  "At 20, I co-founded [Recruitr AI](https://www.recruitrai.com/). Our first paying customer, a US company, signed **2 days after launch**. After that came customers across the US, Canada and India.",
-  "Along the way, I became an [Emergent Ventures](https://www.mercatus.org/emergent-ventures) fellow and spent four months at [The Residency](https://www.livetheresidency.com/).",
-  "At 21, I got **Vakyam AI** into the [IIT Madras Incubation Cell](https://incubation.iitm.ac.in/) with a **seed grant**.",
-  "At 22, we launched [Raaga V1](https://x.com/AadhithyaD_/status/2072176392142504445), our own TTS model for Indian languages. The launch got **400k+ views**.",
-];
 
 /** Turns **this** into bold text and [this](url) into an underlined link. */
 function withBold(text: string) {
@@ -46,143 +32,7 @@ function withBold(text: string) {
   });
 }
 
-const NOW = {
-  name: "Vakyam AI",
-  role: "Co-founder & CEO",
-  note: "Our own TTS models for 8 Indian languages. Under 150 ms latency, ₹0.75 per 1,000 characters",
-  logo: "/vakyamai.jpeg",
-  href: "https://vakyam.ai/",
-  when: "2025–",
-  dates: "Jul 2025 – now",
-  details: [
-    "We built Raaga V1, our own TTS model. The [launch](https://x.com/AadhithyaD_/status/2072176392142504445) got **400k+ views**.",
-    "Latency is **under 150 ms**. That took a lot of inference engineering.",
-    "It costs **₹0.75 per 1,000 characters**.",
-    "The data comes from **Akshar**, a collection pipeline we built ourselves.",
-    "Incubated at the IIT Madras Incubation Cell, with a seed grant.",
-  ],
-};
-
-const BEFORE = [
-  {
-    name: "Recruitr AI",
-    role: "Co-founder & CEO",
-    note: "An AI video interviewer for hiring. Our first paying customer signed 2 days after launch",
-    logo: "/recruitrai.png",
-    href: "https://recruitrai.com/",
-    when: "2024–25",
-    dates: "Jan 2024 – Jul 2025",
-    details: [
-      "Our first paying customer, a US company, signed **2 days after launch**. Then we got customers across the US, Canada and India.",
-      "Built the whole thing from scratch with Steve Aldrin: an AI video interviewer, plus tools to find the right candidates.",
-      "The AI interviewer screened 500+ candidates.",
-      "Backed by **Emergent Ventures**.",
-      "I did whatever the company needed that week: engineering, sales, marketing, support.",
-    ],
-  },
-  {
-    name: "FLSmidth",
-    role: "R&D intern",
-    note: "Led an iPhone app that scans mining mills in 3D. Report time dropped by 90%, and it became an international patent filing",
-    logo: "/flsmidth.jpg",
-    href: "https://www.flsmidth.com/",
-    when: "2023",
-    dates: "Aug – Nov 2023",
-    details: [
-      "FLSmidth builds equipment for the mining industry. Checking how worn a mill is used to mean slow, manual reports.",
-      "Led an iPhone app (SwiftUI) that scans a mill in 3D with LiDAR and photogrammetry, and a desktop app (Flutter) that turns those scans into reports on its own.",
-      "ML models measure the wear straight from the 3D scan, all running on Google Cloud.",
-      "Report time dropped by **90%**, and the work became an **international patent filing**.",
-    ],
-  },
-  {
-    name: "Ford",
-    role: "Software intern",
-    note: "Worked on the Android apps drivers use, and made Ford's broadcasts to drivers 7x faster",
-    logo: "/ford_motor_company_logo.jpeg",
-    href: "https://www.ford.com/",
-    when: "2023",
-    dates: "Aug – Oct 2023",
-    details: [
-      "Worked with the Android team on the apps drivers use.",
-      "Rebuilt how broadcasts reach drivers with gRPC streaming, Google Pub/Sub and Spring Boot. They got about 7x faster.",
-      "Also shipped UI work in Jetpack Compose and deep links from notifications.",
-      "Helped pick the ML models that decide which drivers get which broadcast.",
-    ],
-  },
-  {
-    name: "Bhai AR",
-    role: "SDE intern",
-    note: "Built two Flutter news apps and shipped AiBlocks, an AI image generator",
-    logo: "/bhai_logo.jpeg",
-    href: "https://www.bhai.tech/",
-    when: "2023",
-    dates: "Feb – Mar 2023",
-    details: [
-      "Built two Flutter apps: a news aggregator for North America and an app for submitting news.",
-      "Wrote a cache layer that made images and videos load 80% faster.",
-      "Shipped AiBlocks, an AI image generator that could mint its images as NFTs. 15 NFT projects used it.",
-    ],
-  },
-];
-
-const BUILT = [
-  {
-    name: "Farm OS",
-    note: "Runs a relative's farm, Raspberry Pi elephant alarm included",
-    sticker: "/stickers/farm.webp",
-  },
-  {
-    name: "FitPal",
-    note: "A fitness coach you just chat with, meals and all",
-    sticker: "/stickers/fitpal.webp",
-  },
-  { name: "RoboGPT", note: "A robot arm you can talk to", sticker: "/stickers/robot.webp" },
-  { name: "FalconSight", note: "A drone that spots people in trouble", sticker: "/stickers/drone.webp" },
-  { name: "FitNut", note: "Counts your reps through the camera", sticker: "/stickers/fitnut.webp" },
-  { name: "Drippy AI", note: "An AI stylist for your wardrobe", sticker: "/stickers/drippy.webp" },
-]
-
-const ALONG = [
-  { name: "Emergent Ventures", note: "Fellow, 2025", href: "https://www.mercatus.org/emergent-ventures" },
-  { name: "IIT Madras Incubation Cell", note: "Vakyam AI, seed grant" },
-  { name: "The Residency", note: "Feb – May 2025", href: "https://www.livetheresidency.com/" },
-  { name: "Buildspace", note: "s5", href: "https://buildspace.so" },
-  { name: "VIT Chennai", note: "B.Tech CSE, 2021–25", href: "https://chennai.vit.ac.in/" },
-];
-
-const SHOW_READS = false;
-
-// A film, a book, a talk and a pile of essays I keep going back to.
-const READS = [
-  {
-    name: "Anbe Sivam",
-    by: "Kamal Haasan",
-    kind: "film",
-    href: "https://en.wikipedia.org/wiki/Anbe_Sivam",
-    note: "A road trip that turns into a film about kindness.",
-  },
-  {
-    name: "Deep Work",
-    by: "Cal Newport",
-    kind: "book",
-    href: "https://calnewport.com/deep-work-rules-for-focused-success-in-a-distracted-world/",
-    note: "On the focused work that actually moves things forward.",
-  },
-  {
-    name: "The power of believing that you can improve",
-    by: "Carol Dweck",
-    kind: "talk",
-    href: "https://www.youtube.com/watch?v=_X0mgOOSpLU",
-    note: "Why ability grows when you treat it as something you can build.",
-  },
-  {
-    name: "Paul Graham's essays",
-    kind: "essays",
-    href: "https://paulgraham.com/articles.html",
-    note: "On startups, and on how to think clearly about almost anything.",
-  },
-];
+const SHOW_READS = true;
 
 /* ------------------------------------------------------------------ */
 /* Bits                                                                */
@@ -229,24 +79,69 @@ function Sticker({
   );
 }
 
+type Read = (typeof READS)[number];
+
+/** A small card. On hover, the poster (and the note) pops up like a sticker. */
+function ReadCard({ read: r, i }: { read: Read; i: number }) {
+  const tilt = i % 2 ? 5 : -5;
+  return (
+    <li className="group relative">
+      <a
+        href={r.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={r.note}
+        className="flex h-full flex-col rounded-xl border border-border/80 px-3 py-2.5 transition-colors hover:border-accent-ink/40 hover:bg-muted"
+      >
+        <span className="text-[15px] font-medium leading-snug group-hover:text-accent-ink">{r.name}</span>
+        <span className="mt-0.5 text-xs text-muted-foreground">
+          {r.by ? `${r.by} · ` : ""}
+          {r.kind}
+        </span>
+        {/* No hover on touch screens, so the note just shows there */}
+        <span className="mt-1.5 text-xs leading-snug text-muted-foreground sm:hidden">{r.note}</span>
+      </a>
+      {/* Hover pop: poster + note, desktop only */}
+      <div
+        aria-hidden
+        style={{ "--tilt": `${tilt}deg` } as React.CSSProperties}
+        className="pointer-events-none absolute bottom-[calc(100%-0.5rem)] left-1/2 z-20 hidden w-40 origin-bottom -translate-x-1/2 translate-y-2 scale-90 rotate-0 opacity-0 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:scale-100 group-hover:rotate-[var(--tilt)] group-hover:opacity-100 sm:block"
+      >
+        <div className="rounded-xl border bg-popover p-1.5 shadow-[0_14px_30px_-12px_rgba(40,30,10,0.35)]">
+          {r.img && (
+            <Image
+              src={r.img}
+              alt=""
+              width={r.wide ? 320 : 240}
+              height={r.wide ? 180 : 360}
+              className={`w-full rounded-lg object-cover ${r.wide ? "aspect-video" : "aspect-[2/3]"}`}
+            />
+          )}
+          <p className="px-1.5 pb-1 pt-2 text-xs leading-snug text-foreground/80">{r.note}</p>
+        </div>
+      </div>
+    </li>
+  );
+}
+
 type Work = (typeof BEFORE)[number];
 
 /** A job you can open up for the details. */
-function WorkRow({ work: w }: { work: Work }) {
+function WorkRow({ work: w, compact = false }: { work: Work; compact?: boolean }) {
   const [open, setOpen] = useState(false);
   return (
     <li className={`-mx-3 rounded-xl transition-colors ${open ? "bg-muted/70" : "hover:bg-muted"}`}>
       {/* The whole row toggles; the company name is its own link. */}
       <div
         onClick={() => setOpen((o) => !o)}
-        className="flex w-full cursor-pointer items-center gap-4 px-3 py-2.5 text-left"
+        className={`flex w-full cursor-pointer items-center px-3 text-left ${compact ? "gap-3 py-1.5" : "gap-4 py-2.5"}`}
       >
         <Image
           src={w.logo}
           alt=""
           width={32}
           height={32}
-          className="size-8 rounded-full border bg-white object-contain"
+          className={`rounded-full border bg-white object-contain ${compact ? "size-6" : "size-8"}`}
         />
         <div className="min-w-0 flex-1">
           <div className="text-[15px] font-medium">
@@ -261,7 +156,7 @@ function WorkRow({ work: w }: { work: Work }) {
             </a>{" "}
             <span className="font-normal text-muted-foreground">· {w.role}</span>
           </div>
-          <div className={`text-sm text-muted-foreground ${open ? "" : "line-clamp-2"}`}>{w.note}</div>
+          <div className={`text-sm text-muted-foreground ${open ? "" : compact ? "sr-only" : "line-clamp-2"}`}>{w.note}</div>
         </div>
         <span className="t-meta shrink-0 text-xs text-muted-foreground">{w.when}</span>
         <button
@@ -279,38 +174,38 @@ function WorkRow({ work: w }: { work: Work }) {
           </motion.span>
         </button>
       </div>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
-          >
-            <div className="pb-4 pl-[3.75rem] pr-3">
-              <ul className="space-y-2 text-sm leading-relaxed text-foreground/80">
-                {w.details.map((d) => (
-                  <li key={d} className="relative pl-4 before:absolute before:left-0 before:top-[0.65em] before:size-1 before:rounded-full before:bg-accent-ink/70 [&_b]:font-medium [&_b]:text-foreground">
-                    {withBold(d)}
-                  </li>
-                ))}
-              </ul>
-              <div className="t-meta mt-3 flex gap-4 text-[11px] text-muted-foreground">
-                <span>{w.dates}</span>
-                <a
-                  href={w.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-foreground"
-                >
-                  {new URL(w.href).hostname.replace("www.", "")} ↗
-                </a>
-              </div>
+      {/* Always in the HTML (so search engines and AI agents can read it),
+          collapsed with a 0fr grid row until opened. inert keeps the links
+          out of the tab order while it's shut. */}
+      <div
+        inert={!open}
+        className={`grid transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className={`pb-4 pr-3 ${compact ? "pl-[3rem]" : "pl-[3.75rem]"}`}>
+            <ul className="space-y-2 text-sm leading-relaxed text-foreground/80">
+              {w.details.map((d) => (
+                <li key={d} className="relative pl-4 before:absolute before:left-0 before:top-[0.65em] before:size-1 before:rounded-full before:bg-accent-ink/70 [&_b]:font-medium [&_b]:text-foreground">
+                  {withBold(d)}
+                </li>
+              ))}
+            </ul>
+            <div className="t-meta mt-3 flex gap-4 text-[11px] text-muted-foreground">
+              <span>{w.dates}</span>
+              <a
+                href={w.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-foreground"
+              >
+                {new URL(w.href).hostname.replace("www.", "")} ↗
+              </a>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      </div>
     </li>
   );
 }
@@ -344,6 +239,7 @@ export function Home() {
 
   return (
     <div ref={pageRef} className="relative min-h-screen overflow-x-clip">
+      <KolamIntro />
       <Blossoms corner="garland" />
       <Crow />
       {/* Margin stickers — desktop only, keep the column clean */}
@@ -473,6 +369,11 @@ export function Home() {
               <WorkRow key={w.name} work={w} />
             ))}
           </ul>
+          <ul className="mt-2">
+            {INTERNSHIPS.map((w) => (
+              <WorkRow key={w.name} work={w} compact />
+            ))}
+          </ul>
         </motion.section>
 
         <Rule />
@@ -544,27 +445,19 @@ export function Home() {
             {/* Reads */}
             <motion.section {...fadeUp}>
               <Label>Stuff that stuck with me</Label>
-              <ul className="space-y-1">
-                {READS.map((r) => (
-                  <li key={r.name}>
-                    <a
-                      href={r.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group -mx-3 block rounded-xl px-3 py-2.5 transition-colors hover:bg-muted"
-                    >
-                      <div className="text-[15px]">
-                        <span className="font-medium group-hover:text-accent-ink">{r.name}</span>
-                        {r.by && <span className="text-muted-foreground"> · {r.by}</span>}
-                        <span className="ml-2 font-mono text-[10px] tracking-wider uppercase text-muted-foreground/70">
-                          {r.kind}
-                        </span>
-                      </div>
-                      <div className="text-sm text-muted-foreground">{r.note}</div>
-                    </a>
-                  </li>
+              <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                {READS.map((r, i) => (
+                  <ReadCard key={r.name} read={r} i={i} />
                 ))}
               </ul>
+              <a
+                href="https://letterboxd.com/aadhithyad/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block text-sm text-muted-foreground transition-colors hover:text-accent-ink"
+              >
+                More films on Letterboxd ↗
+              </a>
             </motion.section>
             <Rule />
           </>

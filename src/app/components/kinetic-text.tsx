@@ -41,14 +41,20 @@ export function KineticText({ text, className = "" }: { text: string; className?
       });
     };
 
-    // One wave across the name on load.
-    const timers = letters.flatMap((l, i) => [
-      window.setTimeout(() => pump(l, 1), 300 + i * 55),
-      window.setTimeout(() => reset(l), 650 + i * 55),
-    ]);
+    // One wave across the name on load, after the kolam intro if it plays.
+    let timers: number[] = [];
+    const wave = () => {
+      timers = letters.flatMap((l, i) => [
+        window.setTimeout(() => pump(l, 1), 300 + i * 55),
+        window.setTimeout(() => reset(l), 650 + i * 55),
+      ]);
+    };
+    if (document.documentElement.dataset.intro === "show") window.addEventListener("intro-done", wave, { once: true });
+    else wave();
 
     window.addEventListener("pointermove", onMove);
     return () => {
+      window.removeEventListener("intro-done", wave);
       window.removeEventListener("pointermove", onMove);
       cancelAnimationFrame(frame);
       timers.forEach(clearTimeout);
