@@ -12,7 +12,7 @@ export const MOMENTS = [
   "At 13, I spent a whole summer flashing custom ROMs onto my old tablet, just to get **Google Assistant** on it. Pure curiosity.",
   "At 19, I built 3D reconstruction and wear analysis for mining mills at FLSmidth. It cut report time by **90%** and became an **international patent filing**. I did two more internships that same year.",
   "At 20, I co-founded [Recruitr AI](https://www.recruitrai.com/). Our first paying customer, a US company, signed **2 days after launch**. After that came customers across the US, Canada and India.",
-  "Along the way, I became an [Emergent Ventures](https://www.mercatus.org/emergent-ventures) fellow ([announced by Tyler Cowen](https://marginalrevolution.com/marginalrevolution/2025/11/emergent-ventures-india-13th-cohort.html)) and spent four months at [The Residency](https://www.livetheresidency.com/).",
+  "Along the way, I became an [Emergent Ventures](https://www.mercatus.org/emergent-ventures) fellow ([announced by Tyler Cowen](https://marginalrevolution.com/marginalrevolution/2025/11/emergent-ventures-india-13th-cohort.html), [EV profile](https://app.evindia.live/member/582929c7-1be9-4540-ba80-9c1abfec42be)) and spent four months at [The Residency](https://www.livetheresidency.com/).",
   "At 21, I got **Vakyam AI** into the [IIT Madras Incubation Cell](https://incubation.iitm.ac.in/) with a **seed grant**.",
   "At 22, we launched [Raaga V1](https://x.com/AadhithyaD_/status/2072176392142504445), our own TTS model for Indian languages. The launch got **400k+ views**.",
 ];
