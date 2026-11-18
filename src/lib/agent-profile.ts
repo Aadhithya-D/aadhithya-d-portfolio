@@ -56,6 +56,7 @@ export function agentProfile() {
     ...READS.map((r) => `- ${r.name}${r.by ? ` by ${r.by}` : ""} (${r.kind}): ${r.note} ${r.href}`),
     "",
     "More films: https://letterboxd.com/aadhithyad/",
+    "Emergent Ventures India member profile: https://app.evindia.live/member/582929c7-1be9-4540-ba80-9c1abfec42be",
     "",
     "## Links",
     "",
@@ -88,6 +89,6 @@ export function personJsonLd() {
       datePublished: "2025-11-26",
     },
     knowsAbout: ["Text-to-speech", "Speech AI", "Indian languages", "Machine learning", "Startups", "3D reconstruction"],
-    sameAs: [...Object.values(DATA.contact.social).map((s) => s.url), "https://letterboxd.com/aadhithyad/"],
+    sameAs: [...Object.values(DATA.contact.social).map((s) => s.url), "https://letterboxd.com/aadhithyad/", "https://app.evindia.live/member/582929c7-1be9-4540-ba80-9c1abfec42be"],
   };
 }
