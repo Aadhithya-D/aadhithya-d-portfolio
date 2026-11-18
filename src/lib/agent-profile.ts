@@ -78,7 +78,15 @@ export function personJsonLd() {
     worksFor: { "@type": "Organization", name: "Vakyam AI", url: NOW.href },
     homeLocation: { "@type": "Place", name: "Chennai, Tamil Nadu, India" },
     alumniOf: { "@type": "CollegeOrUniversity", name: "VIT Chennai" },
-    award: ["Emergent Ventures fellow (2025)"],
+    award: ["Emergent Ventures India grantee, 13th cohort (2025)"],
+    // Third-party confirmation that agents and search engines can follow.
+    subjectOf: {
+      "@type": "Article",
+      name: "Emergent Ventures India, 13th cohort",
+      url: "https://marginalrevolution.com/marginalrevolution/2025/11/emergent-ventures-india-13th-cohort.html",
+      author: { "@type": "Person", name: "Tyler Cowen" },
+      datePublished: "2025-11-26",
+    },
     knowsAbout: ["Text-to-speech", "Speech AI", "Indian languages", "Machine learning", "Startups", "3D reconstruction"],
     sameAs: [...Object.values(DATA.contact.social).map((s) => s.url), "https://letterboxd.com/aadhithyad/"],
   };

@@ -147,9 +147,9 @@ export const DATA = {
       title: "Mercatus EV Grantee",
       org: "Mercatus Center",
       year: "2025",
-      href: "https://www.mercatus.org/emergent-ventures",
+      href: "https://marginalrevolution.com/marginalrevolution/2025/11/emergent-ventures-india-13th-cohort.html",
       description:
-        "Emergent Ventures grantee from Mercatus Center.",
+        "Emergent Ventures India grantee (13th cohort) from Mercatus Center, for Recruitr AI.",
     },
     {
       title: "Cyber Spectrum",
