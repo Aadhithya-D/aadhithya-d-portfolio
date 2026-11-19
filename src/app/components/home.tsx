@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { DATA } from "@/data/resume";
-import { ALONG, BEFORE, BUILT, INTERNSHIPS, MOMENTS, NOW, READS, WHO } from "@/data/home-content";
+import { ALONG, BEFORE, BUILT, INTERNSHIPS, MOMENTS, NOW, READS, WHO, WRITING } from "@/data/home-content";
 import { Crow } from "./crow";
 import { KineticText } from "./kinetic-text";
 import { KolamIntro } from "./kolam-intro";
@@ -219,7 +219,7 @@ function Label({ children }: { children: React.ReactNode }) {
 }
 
 function Rule() {
-  return <hr className="my-9 border-t border-dashed border-border" />;
+  return <hr className="my-7 border-t border-dashed border-border" />;
 }
 
 const fadeUp = {
@@ -255,7 +255,7 @@ export function Home() {
         </div>
       </div>
 
-      <main className="relative mx-auto w-full max-w-[36rem] px-6 pb-48 pt-12 sm:pb-96 sm:pt-16">
+      <main className="relative mx-auto w-full max-w-[42rem] px-6 pb-48 pt-10 sm:pb-96 sm:pt-12">
         {/* Hero */}
         <section className="flex items-start justify-between gap-6">
           <div className="min-w-0 flex-1">
@@ -276,7 +276,7 @@ export function Home() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ...fadeUp.transition, delay: 0.15 }}
-              className="mt-5 max-w-sm text-[17px] leading-relaxed text-foreground/80"
+              className="mt-5 max-w-md text-[17px] leading-relaxed text-foreground/80"
             >
               Building{" "}
               <a
@@ -325,7 +325,7 @@ export function Home() {
         {/* Who I am */}
         <motion.section {...fadeUp}>
           <Label>Who I am</Label>
-          <div className="space-y-3 text-[15px] leading-relaxed text-foreground/80">
+          <div className="space-y-2.5 text-[15px] leading-relaxed text-foreground/80">
             {WHO.map((line) => (
               <p key={line}>{line}</p>
             ))}
@@ -335,9 +335,9 @@ export function Home() {
         {SHOW_MOMENTS && (
           <>
             {/* Moments */}
-            <motion.section {...fadeUp} className="mt-8">
+            <motion.section {...fadeUp} className="mt-6">
               <Label>How I got here</Label>
-              <ul className="space-y-3">
+              <ul className="space-y-2.5">
                 {MOMENTS.map((line) => (
                   <li
                     key={line}
@@ -362,7 +362,7 @@ export function Home() {
         </motion.section>
 
         {/* Before */}
-        <motion.section {...fadeUp} className="mt-8">
+        <motion.section {...fadeUp} className="mt-6">
           <Label>Before</Label>
           <ul className="space-y-1">
             {BEFORE.map((w) => (
@@ -462,6 +462,35 @@ export function Home() {
             <Rule />
           </>
         )}
+
+        {/* Writing */}
+        <motion.section {...fadeUp}>
+          <Label>Writing</Label>
+          <ul className="space-y-1">
+            {WRITING.map((post) => (
+              <li key={post.href}>
+                <a
+                  href={post.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group -mx-3 block rounded-xl px-3 py-2.5 transition-colors hover:bg-muted"
+                >
+                  <div className="flex items-baseline justify-between gap-4">
+                    <span className="text-[15px] font-medium transition-colors group-hover:text-accent-ink">
+                      {post.title} ↗
+                    </span>
+                    <span className="t-meta shrink-0 text-xs text-muted-foreground">{post.date}</span>
+                  </div>
+                  <p className="mt-1 text-sm text-muted-foreground">{post.note}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-2 text-xs text-muted-foreground/80">
+            Just one older post from college for now. I plan to write more here.
+          </p>
+        </motion.section>
+        <Rule />
 
         {/* Say hi */}
         <motion.footer {...fadeUp} className="space-y-5">

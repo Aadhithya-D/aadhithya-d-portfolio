@@ -1,4 +1,4 @@
-import { ALONG, BEFORE, BUILT, INTERNSHIPS, MOMENTS, NOW, READS, WHO } from "@/data/home-content";
+import { ALONG, BEFORE, BUILT, INTERNSHIPS, MOMENTS, NOW, READS, WHO, WRITING } from "@/data/home-content";
 import { DATA } from "@/data/resume";
 
 /**
@@ -57,6 +57,10 @@ export function agentProfile() {
     "",
     "More films: https://letterboxd.com/aadhithyad/",
     "Emergent Ventures India member profile: https://app.evindia.live/member/582929c7-1be9-4540-ba80-9c1abfec42be",
+    "",
+    "## Writing",
+    "",
+    ...WRITING.map((w) => `- ${w.title} (${w.date}): ${w.note} ${w.href}`),
     "",
     "## Links",
     "",
